@@ -8,15 +8,41 @@
 
  \section{Java}
 
+ \keyword{Java} es un lenguaje de programación de propósito general, concurrente, orientado a objetos y diseñado específicamente para tener tan pocas dependencias de implementación como fuera posible.
+
+ Su intención es permitir que los desarrolladores de aplicaciones escriban el programa una vez y lo puedan ejecutar en cualquier dispositivo (conocido en inglés como \emph{WORA}, o "\emph{write once, run anywhere}"), lo que quiere decir que el código que es ejecutado en una plataforma no necesita ser recompilado para correr en otra. \emph{\parencite{Reference6}}
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.4]{Figures/JavaLogo}
+   \decoRule
+   \caption[Java (Logo)]{Logo de Java}
+   \label{fig:JavaLogo}
+ \end{figure}
+
  %----------------------------------------------------------------------------------------
 
  \section{Android}
+
+ \keyword{Android} es un sistema operativo basado en el núcleo Linux, diseñado principalmente para dispositivos móviles con pantalla táctil, como \emph{smartphones} y \emph{tablets}.
+
+ Aunque la mayoría de las aplicaciones están escritas en Java, no hay una máquina virtual Java en la plataforma.
+ El bytecode Java no es ejecutado, sino que primero se compila en un ejecutable Dalvik y se ejecuta en la Máquina Virtual Dalvik\footnote{Dalvik es una máquina virtual especializada, diseñada específicamente para Android y optimizada para dipositivos móviles que funcionan con batería y que tienen memoria y procesador limitados.}.
+ A partir de la versión 5.0, se utiliza el Android Runtime (ART). \emph{\parencite{Reference7}}
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.05]{Figures/AndroidLogo}
+   \decoRule
+   \caption[Android (Logo)]{Logo de Android}
+   \label{fig:AndroidLogo}
+ \end{figure}
 
  %----------------------------------------------------------------------------------------
 
  \section{Bouncy Castle}
 
- Bouncy Castle (BC), también llamado Bouncy Castle Crypto, es una colección de APIs utilizados en criptografía. Tiene versiones para los lenguajes Java y C\#.
+ \keyword{Bouncy Castle (BC)}, también llamado Bouncy Castle Crypto, es una colección de APIs utilizados en criptografía. Tiene versiones para los lenguajes Java y C\#.
 
  La arquitectura de BC consta de dos componentes principales que soportan las prestaciones básicas de criptografía.
  Estos son una API \emph{ligera} y un proveedor para Java Cryptography Extension (JCE)\footnote{JCE implementa encriptación, generación y protocolos de establecimiento de claves y algoritmos MAC.}.
@@ -24,7 +50,7 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics{Figures/BouncyCastle}
+   \includegraphics[scale=0.5]{Figures/BouncyCastle}
    \decoRule
    \caption[Legion of Bouncy Castle]{The Legion of Bouncy Castle, creadores de Bouncy Castle}
    \label{fig:BouncyCastle}
@@ -38,7 +64,7 @@
 
  \section{Criptografía de clave pública}
 
- La criptografía de clave pública, también llamada criptografía asimétrica, es el método criptográfico que usa un par de claves para la firma y el cifrado de mensajes.
+ La \keyword{criptografía de clave pública}, también llamada criptografía asimétrica, es el método criptográfico que usa un par de claves para la firma y el cifrado de mensajes.
  Una clave es \emph{pública} y se puede entregar a cualquier persona, la otra clave es \emph{privada} y el propietario debe guardarla de modo que nadie tenga acceso a ella.
 
  Si el remitente usa la clave pública del destinatario para cifrar el mensaje, una vez cifrado, sólo la clave privada del destinatario podrá descifrar este mensaje, ya que es el único que la conoce.
@@ -46,13 +72,13 @@
 
  Si el propietario del par de claves usa su clave privada para cifrar el mensaje, cualquiera puede descifrarlo utilizando su clave pública.
  En este caso se consigue por tanto la \emph{identificación} y \emph{autentificación} del remitente, ya que se sabe que sólo pudo haber sido él quien empleó su clave privada (salvo que alguien se la hubiese podido robar).
- Esta idea es el fundamento de la firma electrónica\footnote{Existen multitud de algoritmos de firma, para este proyecto se ha optado por usar RSASSA-PSS}. \emph{\parencite{Reference5}}
+ Esta idea es el fundamento de la firma electrónica\footnote{Existen multitud de algoritmos de firma, para este proyecto se ha optado por usar RSASSA-PSS.}. \emph{\parencite{Reference5}}
 
  \begin{figure}[ht]
    \centering
    \includegraphics[scale=0.5]{Figures/PublicKeyEncryption}
    \decoRule
-   \caption[Cifrado de clave pública]{Esquema general del cifrado de clave pública}
+   \caption[Cifrado de clave pública (Esquema)]{Esquema general del cifrado de clave pública}
    \label{fig:PublicKeyEncryption}
  \end{figure}
 
