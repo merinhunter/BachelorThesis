@@ -60,6 +60,16 @@
 
  \section{Padding}
 
+ \keyword{Padding} es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr el tamaño requerido.
+
+ Existen múltiples técnicas de padding. Bruce Schenier, en su libro \emph{Cryptography Engineering}, menciona dos:
+ \begin{itemize}
+ \item Agregar al final del mensaje un byte con el valor 128 y luego agregar tantos 0’s como haga falta para alcanzar el largo del \emph{bloque de largo fijo}.
+ \item Determinar el número de bytes que se requieren de padding. Supongamos que este número es \keyword{n}. Completar el mensaje con \keyword{n} bytes de valor \keyword{n}.
+ \end{itemize}
+
+ Cualquier técnica es válida mientras permita completar el mensaje hasta el largo requerido y el receptor pueda obtener con exactitud el mensaje original. \emph{\parencite{Reference8}}
+
  %----------------------------------------------------------------------------------------
 
  \section{Criptografía de clave pública}
@@ -85,6 +95,27 @@
  %----------------------------------------------------------------------------------------
 
  \section{RSA}
+
+ \keyword{RSA} (\keyword{Rivest–Shamir–Adleman})\footnote{El acrónimo RSA está compuesto por las letras iniciales de los apellidos de Ron Rivest, Adi Shamir y Leonard Adleman, quienes primero describieron públicamente el algoritmo en 1978.} es uno de los primeros sistemas de criptografía de clave pública y es ampliamente utilizado para la transmisión segura de datos.
+ En RSA, la asimetría que existe entre las claves pública y privada se basa en la dificultad práctica de la factorización del producto de dos grandes números primos (\emph{factoring problem}). \emph{\parencite{Reference9}}
+
+ \subsection{Clave pública RSA}
+
+ Una \keyword{clave pública RSA} consta de dos componentes:
+ \begin{itemize}
+ \item \keyword{n} -- el módulo RSA, un entero positivo.
+ \item \keyword{e} -- el exponente público RSA, un entero positivo.
+ \end{itemize}
+
+ En una \keyword{clave pública RSA} válida, \keyword{n} es un producto de \keyword{u}\footnote{La ventaja de usar más de dos factores primos es que tendríamos un menor coste computacional para el desencriptador y las primitivas de firma.} números primos impares distintos
+ \[ r_i, i = 1, 2, ..., u \]
+ , donde \keyword{u} >= 2, y \keyword{e} es un entero entre 3 y \keyword{n} - 1, satisfaciendo
+ \[ MCD(e, \lambda(n)) = 1 \]
+ , donde
+ \[ \lambda(n)\footnote{Función de Carmichael.} = mcm(r_1 - 1, ..., r_u - 1) \]
+ Por convención, los dos primeros números primos se denotan como \emph{p} y \emph{q}, respectivamente. \emph{\parencite{Reference10}}
+
+ \subsection{Clave privada RSA}
 
  %----------------------------------------------------------------------------------------
 
