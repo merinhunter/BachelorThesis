@@ -107,15 +107,43 @@
  \item \keyword{e} -- el exponente público RSA, un entero positivo.
  \end{itemize}
 
- En una \keyword{clave pública RSA} válida, \keyword{n} es un producto de \keyword{u}\footnote{La ventaja de usar más de dos factores primos es que tendríamos un menor coste computacional para el desencriptador y las primitivas de firma.} números primos impares distintos
+ En una \keyword{clave pública RSA} válida, \keyword{n} es un producto de \keyword{u} números primos impares distintos
  \[ r_i, i = 1, 2, ..., u \]
  , donde \keyword{u} >= 2, y \keyword{e} es un entero entre 3 y \keyword{n} - 1, satisfaciendo
  \[ MCD(e, \lambda(n)) = 1 \]
  , donde
  \[ \lambda(n)\footnote{Función de Carmichael.} = mcm(r_1 - 1, ..., r_u - 1) \]
- Por convención, los dos primeros números primos se denotan como \emph{p} y \emph{q}, respectivamente. \emph{\parencite{Reference10}}
+ Por convención, los dos primeros números primos se denotan como \emph{p} y \emph{q}, respectivamente.\footnote{La ventaja de usar más de dos números primos es que tendríamos un menor coste computacional para el desencriptador.} \emph{\parencite{Reference10}}
 
  \subsection{Clave privada RSA}
+
+ Una \keyword{clave privada RSA} consta de dos componentes:\footnote{Existe otra representación de una clave privada que consta de un quinteto de factores, pero para este proyecto se ha usado la representación que se detalla.}
+ \begin{itemize}
+ \item \keyword{n} -- el módulo RSA, un entero positivo.
+ \item \keyword{d} -- el exponente privado RSA, un entero positivo.
+ \end{itemize}
+
+ En una \keyword{clave privada RSA} válida, el módulo \keyword{n} es el mismo que el correspondiente a la \keyword{clave pública}.
+ El exponente privado \keyword{d} es un entero positivo menor que \keyword{n} que satisface
+ \[ e * d = 1 \Mod{\lambda(n)} \]
+ , donde \keyword{e} es el correspondiente exponente público RSA. \emph{\parencite{Reference11}}
+
+ \subsection{Evaluación de la función RSA}
+
+ Este es el proceso de transformar un mensaje de texto plano en texto cifrado, o viceversa.
+ La \keyword{función RSA}, para el mensaje \emph{m} y la clave \emph{k} se evalúa de la siguiente manera:
+ \[ F(m, k) = m^k \Mod{n} \]
+
+ Hay obviamente dos casos:
+ \begin{itemize}
+ \item Cifrar con la \emph{clave pública} y luego descifrar con la \emph{clave privada}.
+ \[ F(m, e) = m^e \Mod{n} = c \]
+ \[ F(c, d) = c^d \Mod{n} = m \]
+ , donde \emph{m} es el mensaje\footnote{El mensaje se representa como un número entero mediante una transformación, que convierte el bytecode(Hexadecimal) a decimal.}, \emph{e} es el exponente público, \emph{d} es el exponente privado y \emph{c} es el mensaje cifrado.
+ \item Cifrar con la \emph{clave privada} y luego descifrar con la \emph{clave pública}.
+ \end{itemize}
+
+ Ambos casos son un espejo del otro, y las funciones de encriptación y desencriptación son equivalentes. \emph{\parencite{Reference12}}
 
  %----------------------------------------------------------------------------------------
 
