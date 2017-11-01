@@ -62,6 +62,33 @@
 
  %----------------------------------------------------------------------------------------
 
+ \section{Criptografía de clave simétrica}
+
+ La \emph{confidencialidad} en las comunicaciones es la causa principal por la cual surgen los algoritmos de encriptación.
+ La \keyword{criptografía de clave simétrica} nos permite de manera segura comunicarnos con otra persona (o máquina) de manera que un tercero, aun teniendo el mensaje cifrado, no pudiera sacar nada de información de él.
+
+ Los algoritmos basados en este modelo utilizan un \emph{secreto} compartido entre los dos extremos que se quieren comunicar.
+ Una vez acordado, nadie que no posea este secreto podría descifrar ningún mensaje enviado por uno u otro extremo.
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.5]{Figures/SymmetricKeyEncryption}
+   \decoRule
+   \caption[Criptografía de clave simétrica (Esquema)]{Esquema general de la criptografía de clave simétrica} \emph{\parencite{Reference20}}
+   \label{fig:SymmetricKeyEncryption}
+ \end{figure}
+
+ El problema de este modelo viene en el intercambio de las claves.
+ Es necesario un canal seguro por el que comunicar las claves y este tipo de algoritmos no proveen ese servicio. \emph{\parencite{Reference19}}
+
+ Es por ello que normalmente se mezcla este tipo de criptografía con otro conocido como \keyword{criptografía de clave pública}, el cual veremos más adelante.
+
+ %----------------------------------------------------------------------------------------
+
+ \section{Cifrado de bloques}
+
+ %----------------------------------------------------------------------------------------
+
  \section{Padding}
 
  \keyword{Padding} es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
@@ -73,9 +100,17 @@
 
  %----------------------------------------------------------------------------------------
 
+ \section{CBC}
+
+ %----------------------------------------------------------------------------------------
+
+ \section{AES}
+
+ %----------------------------------------------------------------------------------------
+
  \section{Criptografía de clave pública}
 
- Uno de los problemas que tiene la \keyword{criptografía de clave simétrica} es que necesita de un medio seguro para compartir la clave de cifrado entre los componentes de la comunicación.
+ Como hemos visto, uno de los problemas que tiene la \keyword{criptografía de clave simétrica} es que necesita de un medio seguro para compartir la clave de cifrado entre los componentes de la comunicación.
  La \keyword{criptografía de clave pública} soluciona este problema al no ser necesario crear un canal seguro para el establecimiento de la clave, ya que para este modelo se hace uso de un par de claves: una \emph{pública} y otra \emph{privada}.
 
  La esencia de este algoritmo radica en que un mensaje cifrado con una clave pública solo puede ser descifrado con su homóloga privada, y viceversa.
@@ -179,22 +214,6 @@
  Para la primera (\emph{maskedDB}), generaremos una máscara\footnote{Una máscara es muy parecida a una \emph{hash}. Mientras la segunda tiene un tamaño determinado, una máscara puede tomar distintos tamaños según la necesidad.} de \keyword{H} y haremos una operación \emph{xor} con ella y la salt (junto a otro \emph{padding}).\footnote{Este \emph{padding} está formado por una cantidad variable de bytes con valor \emph{0x00}, teniendo al final un byte de valor \emph{0x01}.}
 
  Ahora solo nos quedará añadir al final de nuestra salida un byte con valor \emph{0xbc} y ya habremos acabado. \emph{\parencite{Reference17}}
-
- %----------------------------------------------------------------------------------------
-
- \section{Criptografía de clave simétrica}
-
- %----------------------------------------------------------------------------------------
-
- \section{Cifrado de bloques}
-
- %----------------------------------------------------------------------------------------
-
- \section{CBC}
-
- %----------------------------------------------------------------------------------------
-
- \section{AES}
 
  %----------------------------------------------------------------------------------------
 
