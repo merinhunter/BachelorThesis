@@ -67,7 +67,7 @@
  La \emph{confidencialidad} en las comunicaciones es la causa principal por la cual surgen los algoritmos de encriptación.
  La \keyword{criptografía de clave simétrica} nos permite de manera segura comunicarnos con otra persona (o máquina) de manera que un tercero, aun teniendo el mensaje cifrado, no pudiera sacar nada de información de él.
 
- Los algoritmos basados en este modelo utilizan un \emph{secreto} compartido entre los dos extremos que se quieren comunicar.
+ Los algoritmos basados en este modelo utilizan un \emph{secreto} compartido entre los dos puntos que se quieren comunicar.
  Una vez acordado, nadie que no posea este secreto podría descifrar ningún mensaje enviado por uno u otro extremo.
 
  \begin{figure}[ht]
@@ -85,7 +85,28 @@
 
  %----------------------------------------------------------------------------------------
 
- \section{Cifrado de bloques}
+ \section{Cifrado por bloques}
+
+ Dentro de la criptografía simétrica nos encontramos dos grandes algoritmos: los de tipo \emph{stream ciphers} y los de tipo \emph{block ciphers}.
+ Nos centraremos en el segundo.
+
+ Un algoritmo basado en \keyword{cifrado por bloques} es aquel que, como su propio nombre indica,
+ realiza un cifrado primero dividiendo el \emph{plaintext} en bloques de un tamaño determinado\footnote{Cuando el tamaño del fichero que queremos encriptar no es múltiplo del tamaño de bloque, el bloque final tendrá un tamaño diferente al resto. Esto se soluciona con técnicas de padding, lo cual se explica en el siguiente punto.}
+ y luego cifrando por separado estos bloques, dando como resultado un \emph{ciphertext}.
+
+ La mayoria de los \emph{block ciphers} son iterativos, es decir, realizan la misma operación un determinado número de veces (\emph{rounds}).
+ Esta operación suele ser idéntica en todas las rondas, a excepción de la primera o la última, donde suele ser distinta.
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.4]{Figures/ECB}
+   \decoRule
+   \caption[Electronic Codebook (ECB)]{Cifrado usando el modo Electronic Codebook (ECB)} \emph{\parencite{Reference22}}
+   \label{fig:ECB}
+ \end{figure}
+
+ Existen varios modos de operación para llevar a cabo un \keyword{cifrado por bloques}: ECB, CBC, OFB, CFB, etc.
+ Cada uno de ellos opera los bloque de diferente forma, utilizando para ello técnicas muy diversas. \emph{\parencite{Reference21}}
 
  %----------------------------------------------------------------------------------------
 
