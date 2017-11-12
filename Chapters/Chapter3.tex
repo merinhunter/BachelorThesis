@@ -8,10 +8,12 @@
 
  \section{Java}
 
- \keyword{Java} es un lenguaje de programación de propósito general, orientado a objetos y concurrente. Originalmente fue desarrollado por James Gosling, Bill Joy y Guy Steele para Sun Microsystems en 1996 y fue adquirido por Oracle en 2010.
+ \keyword{Java} es un lenguaje de programación de propósito general, orientado a objetos y concurrente.
+ Originalmente fue desarrollado por James Gosling, Bill Joy y Guy Steele para Sun Microsystems en 1996 y fue adquirido por Oracle en 2010.
 
  Fue diseñado para que los desarrolladores escribiesen una única vez su programa y pudieran ejecutarlo en cualquier máquina sin necesitar recompilarlo.
- Esto es posible debido a que las aplicaciones Java son compiladas a \emph{bytecode} que luego es ejecutado en una \keyword{Java Virtual Machine (JVM)}, sin importar la arquitectura de la máquina. \emph{\parencite{Reference13}}
+ Esto es posible debido a que las aplicaciones Java son compiladas a \emph{bytecode} que luego es ejecutado en una \keyword{Java Virtual Machine (JVM)},
+ sin importar la arquitectura de la máquina. \emph{\parencite{Reference13}}
 
  \begin{figure}[ht]
    \centering
@@ -25,7 +27,8 @@
 
  \section{Android}
 
- \keyword{Android} es un sistema operativo propiedad de Google, basado en el \emph{kernel} de Linux. Está diseñado principalmente para dispositivos táctiles, como \emph{smartphones} y \emph{tablets}.
+ \keyword{Android} es un sistema operativo propiedad de Google, basado en el \emph{kernel} de Linux.
+ Está diseñado principalmente para dispositivos táctiles, como \emph{smartphones} y \emph{tablets}.
 
  \keyword{Android} es compatible con las librerías de Java, por lo que la mayoría de las aplicaciones están escritas en ese lenguaje.
  Desde la versión 4.4 de Android, se utiliza \keyword{Android Runtime} (\keyword{ART}) como entorno de ejecución\footnote{En versiones anteriores se utilizaba Dalvik y su máquina virtual.},
@@ -33,9 +36,9 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.05]{Figures/AndroidLogo}
+   \includegraphics[scale=0.1]{Figures/AndroidLogo}
    \decoRule
-   \caption[Android (Logo)]{Logo de Android} \emph{\parencite{Reference7}}
+   \caption[Android (Logo)]{Logo de Android} \emph{\parencite{Reference3}}
    \label{fig:AndroidLogo}
  \end{figure}
 
@@ -65,7 +68,8 @@
  \section{Criptografía de clave simétrica}
 
  La \emph{confidencialidad} en las comunicaciones es la causa principal por la cual surgen los algoritmos de encriptación.
- La \keyword{criptografía de clave simétrica} nos permite de manera segura comunicarnos con otra persona (o máquina) de manera que un tercero, aun teniendo el mensaje cifrado, no pudiera sacar nada de información de él.
+ La \keyword{criptografía de clave simétrica} nos permite de manera segura comunicarnos con otra persona (o máquina) de manera que un tercero,
+ aun teniendo el mensaje cifrado, no pudiera sacar nada de información de él.
 
  Los algoritmos basados en este modelo utilizan un \emph{secreto} compartido entre los dos puntos que se quieren comunicar.
  Una vez acordado, nadie que no posea este secreto podría descifrar ningún mensaje enviado por uno u otro extremo.
@@ -114,14 +118,61 @@
 
  \keyword{Padding} es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
 
- Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema. Para solucionar esto existen multitud de técnicas de \keyword{padding},
- desde agregar al final del bloque un byte con un cierto valor, hasta simplemente rellenar con ceros.
+ Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema.
+ Para solucionar esto existen multitud de técnicas de \keyword{padding}, desde agregar al final del bloque un byte con un cierto valor, hasta simplemente rellenar con ceros.
 
- El requisito indispensable que debe cubrir cualquier técnica de padding es que debe permitir al destinatario diferenciar los bytes del mensaje original de los byte de relleno. \emph{\parencite{Reference8}}
+ El requisito indispensable que debe cumplir cualquier técnica de padding es que debe permitir al destinatario diferenciar los bytes del mensaje original de los byte de relleno. \emph{\parencite{Reference8}}
 
  %----------------------------------------------------------------------------------------
 
  \section{CBC}
+
+ \keyword{Cipher Block Chaining (CBC)} es uno de los modos de operación para cifrado por bloques que hemos mencionado antes,
+ y el que se ha decidido elegir para este proyecto.
+
+ Algunos modos como ECB (debido a como opera) tienen la característica de que, dada una clave determinada,
+ cualquier \emph{plaintext} siempre dará como resultado el mismo \emph{ciphertext}.
+ Si, como es nuestro caso, esta característica supone un problema,
+ se opta por otros modos de operación como CBC, el cual soluciona esto. \emph{\parencite{Reference23}}
+
+ \subsection{Modo de operación}
+
+ \keyword{CBC} funciona combinando cada bloque de \emph{plaintext} con el bloque de \emph{ciphertext} justamente anterior.
+ Obviamente, para el primer bloque no se dispone de un bloque cifrado anterior,
+ por lo que se recurre al uso de un \keyword{vector de inicialización (IV)}.
+ \footnote{Un IV es un conjunto de bytes aleatorios que se usan para suplir la necesidad de un bloque cifrado anterior al primer bloque.
+ Una muy mala práctica, por no decir prohibida, es la reutilización de un IV, ya que éste debe ser de uso único.}
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.4]{Figures/CBC_enc}
+   \decoRule
+   \caption[Cipher Block Chaining (CBC) - Cifrado]{Cifrado usando el modo Cipher Block Chaining (CBC)} \emph{\parencite{Reference1}}
+   \label{fig:CBC_enc}
+ \end{figure}
+
+ Como vemos en la Figura~\ref{fig:CBC_enc}, en el cifrado con \keyword{CBC}, el primer bloque de texto y el IV son sometidos a una operación XOR.
+ El resultado de esta operación se pasa por una función de cifrado\footnote{La función de cifrado es la misma para todos los bloques.}, la cual nos dará el primer bloque cifrado.
+ Este primer bloque es entonces pasado por un XOR junto con el segundo bloque de texto, y así sucesivamente.
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.4]{Figures/CBC_dec}
+   \decoRule
+   \caption[Cipher Block Chaining (CBC) - Descifrado]{Descifrado usando Cipher Block Chaining (CBC)} \emph{\parencite{Reference2}}
+   \label{fig:CBC_dec}
+ \end{figure}
+
+ A la hora de desencriptar, la función inversa a la utilizada en la encriptación
+ es usada para obtener cada bloque de texto a partir de los bloques cifrados.
+ Una representación de este proceso lo encontramos en la Figura~\ref{fig:CBC_dec}.
+
+ El objetivo de un \keyword{cifrado por bloques} es poder paralelizar el proceso de encriptación.
+ Lamentablemente, el cifrado con \keyword{CBC} debe ser secuencial,
+ ya que para obtener cada bloque es necesario haber generado antes el anterior.
+
+ Sin embargo, el proceso de desencriptación con \keyword{CBC} sí que puede ser paralelizado,
+ ya que las mútiples funciones de descifrado que se realizan no dependen de ningún bloque anterior. \emph{\parencite{Reference24}}
 
  %----------------------------------------------------------------------------------------
 
