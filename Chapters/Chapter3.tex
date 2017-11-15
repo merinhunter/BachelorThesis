@@ -178,6 +178,92 @@
 
  \section{AES}
 
+ \keyword{Advanced Encryption Standard (AES)}, también conocido como \keyword{Rijndael} por sus creadores,
+ es el resultado del proceso de búsqueda de un estándar para encriptación por parte del gobierno de los Estados Unidos.
+
+ \keyword{AES} es una variante de \keyword{Rijndael}, del cual solo toma algunos modos.
+ Mientras que el algoritmo original puede tomar tamaños de bloque múltiplos de 32 bits\footnote{Con un mínimo de 128 bits y un máximo de 256.},
+ \keyword{AES} únicamente opera con tamaños de bloque igual a 128 bits.
+
+ Con el tamaño de las claves ocurre algo parecido, ya que \keyword{AES} solo soporta tamaños de 128, 192 y 256 bits,
+ mientras que el algoritmo original soporta unos cuantos más. \emph{\parencite{Reference25}}
+
+ \subsection{State}
+
+ Antes de meternos a hablar del algoritmo en sí, es necesario explicar una estructura que se usará
+ constantemente.
+
+ El \keyword{\emph{State}} es una estructura bidimensional de bytes con la que se operan los bytes
+ de los bloques de entrada. Está compuesto por 4 filas y 4 columnas, dando un total de 32 celdas,
+ en las cuales se almacenan los 16 bytes que forman un bloque. \emph{\parencite{Reference26}}
+
+ \subsection{Algoritmo}
+
+ En \keyword{AES} el tamaño del bloque de entrada, del de salida y del \emph{State} es de 128 bits,
+ y el tamaño de la clave puede tomar los valores de 128, 192 ó 256 bits.
+
+ \begin{table}
+ \caption{Combinaciones para el número de rondas en AES.}
+ \label{tab:rounds}
+ \centering
+ \begin{tabular}{l l l}
+ \toprule
+ \tabhead{Key size (bits)} & \tabhead{Block size (bits)} & \tabhead{Rounds (Nr)} \\
+ \midrule
+ 128 & 128 & 10\\
+ 192 & 128 & 12\\
+ 256 & 128 & 14\\
+ \bottomrule\\
+ \end{tabular}
+ \end{table}
+
+ El número de rondas que lleva a cabo el algoritmo depende del tamaño de la clave,
+ lo cual vemos representado en el Cuadro~\ref{tab:rounds}. Cada ronda está compuesta
+ por 4 transformaciones diferentes de los bytes del \emph{State}:
+
+ \begin{itemize}
+ \item \keyword{SubBytes}
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/SubBytes}
+   \decoRule
+   \caption[SubBytes (AES)]{Operación SubBytes para AES} \emph{\parencite{Reference27}}
+   \label{fig:SubBytes}
+ \end{figure}
+
+ \item \keyword{ShiftRows}
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/ShiftRows}
+   \decoRule
+   \caption[ShiftRows (AES)]{Operación ShiftRows para AES} \emph{\parencite{Reference28}}
+   \label{fig:ShiftRows}
+ \end{figure}
+
+ \item \keyword{MixColumns}
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/MixColumns}
+   \decoRule
+   \caption[MixColumns (AES)]{Operación MixColumns para AES} \emph{\parencite{Reference29}}
+   \label{fig:MixColumns}
+ \end{figure}
+
+ \item \keyword{AddRoundKey}
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/AddRoundKey}
+   \decoRule
+   \caption[AddRoundKey (AES)]{Operación AddRoundKey para AES} \emph{\parencite{Reference30}}
+   \label{fig:AddRoundKey}
+ \end{figure}
+
+ \end{itemize}
+
  %----------------------------------------------------------------------------------------
 
  \section{Criptografía de clave pública}
