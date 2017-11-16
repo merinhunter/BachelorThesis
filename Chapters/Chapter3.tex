@@ -118,7 +118,7 @@
 
  \keyword{Padding} es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
 
- Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema.
+ Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la itud que queremos para nuestro sistema.
  Para solucionar esto existen multitud de técnicas de \keyword{padding}, desde agregar al final del bloque un byte con un cierto valor, hasta simplemente rellenar con ceros.
 
  El requisito indispensable que debe cumplir cualquier técnica de padding es que debe permitir al destinatario diferenciar los bytes del mensaje original de los byte de relleno. \emph{\parencite{Reference8}}
@@ -205,50 +205,54 @@
  \begin{itemize}
  \item \keyword{SubBytes} -- Mediante una transformación no lineal,
  los bytes del \emph{State} son reemplazados por otros usando una tabla de sustitución.
+ (Figura~\ref{fig:SubBytes})
+
+ \item \keyword{ShiftRows} -- Los bytes de las 3 últimas filas del \emph{State}
+ se desplazan de manera cíclica, cada fila con un offset distinto.
+ (Figura~\ref{fig:ShiftRows})
+
+ \item \keyword{MixColumns} -- Mediante una transformación lineal,
+ las columnas del \emph{State} se mezclan para producir unas nuevas.
+ (Figura~\ref{fig:MixColumns})
+
+ \item \keyword{AddRoundKey} -- En esta transformación, una \emph{Round Key} se
+ añade al \emph{State} mediante una operación XOR.
+ La itud de la \emph{Round Key} debe ser igual al tamaño del \emph{State}.
+ (Figura~\ref{fig:AddRoundKey})
+
+ \end{itemize}
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.3]{Figures/SubBytes}
+   \includegraphics[scale=0.25]{Figures/SubBytes}
    \decoRule
    \caption[SubBytes (AES)]{Operación SubBytes para AES} \emph{\parencite{Reference27}}
    \label{fig:SubBytes}
  \end{figure}
 
- \item \keyword{ShiftRows} -- Los bytes de las 3 últimas filas del \emph{State}
- se desplazan de manera cíclica, cada fila con un offset distinto.
-
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.3]{Figures/ShiftRows}
+   \includegraphics[scale=0.25]{Figures/ShiftRows}
    \decoRule
    \caption[ShiftRows (AES)]{Operación ShiftRows para AES} \emph{\parencite{Reference28}}
    \label{fig:ShiftRows}
  \end{figure}
 
- \item \keyword{MixColumns} -- Mediante una transformación lineal,
- las columnas del \emph{State} se mezclan para producir unas nuevas.
-
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.3]{Figures/MixColumns}
+   \includegraphics[scale=0.25]{Figures/MixColumns}
    \decoRule
    \caption[MixColumns (AES)]{Operación MixColumns para AES} \emph{\parencite{Reference29}}
    \label{fig:MixColumns}
  \end{figure}
 
- \item \keyword{AddRoundKey} -- En esta transformación, una \emph{Round Key} se
- añade al \emph{State} mediante una operación XOR.
- La longitud de la \emph{Round Key} debe ser igual al tamaño del \emph{State}.
-
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.3]{Figures/AddRoundKey}
+   \includegraphics[scale=0.25]{Figures/AddRoundKey}
    \decoRule
    \caption[AddRoundKey (AES)]{Operación AddRoundKey para AES} \emph{\parencite{Reference30}}
    \label{fig:AddRoundKey}
  \end{figure}
-
- \end{itemize}
 
  \emph{\parencite{Reference26}}
 
@@ -263,11 +267,7 @@
  Una vez conseguidas las \emph{Round Keys}, se pasa por una ronda inicial especial
  en la cual solo se realiza la transformación \emph{AddRoundKey}.
 
- Después de esta etapa inicial, se pasa a las rondas habladas en el punto anterior.
- El número de rondas que lleva a cabo el algoritmo depende del tamaño de la clave,
- lo cual vemos representado en el Cuadro~\ref{tab:rounds}.
-
- \begin{table}
+ \begin{table}[ht]
  \caption{Combinaciones para el número de rondas en AES.}
  \label{tab:rounds}
  \centering
@@ -282,8 +282,12 @@
  \end{tabular}
  \end{table}
 
+ Después de esta etapa inicial, se pasa a las rondas habladas en el punto anterior.
+ El número de rondas que lleva a cabo el algoritmo depende del tamaño de la clave,
+ lo cual vemos representado en el Cuadro~\ref{tab:rounds}.
+
  En todas estas rondas menos en la útlima, el orden de las transformaciones será siempre el mismo:
- SubBytes -> ShiftRows -> MixColumns -> AddRoundKey
+ \[ SubBytes \rightarrow ShiftRows \rightarrow MixColumns \rightarrow AddRoundKey \]
 
  La última ronda es idéntica a las anteriores salvo por el hecho de que la transformación \emph{MixColumns} no se realiza.
 
