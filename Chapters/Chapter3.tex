@@ -182,7 +182,7 @@
  es el resultado del proceso de búsqueda de un estándar para encriptación por parte del gobierno de los Estados Unidos.
 
  \keyword{AES} es una variante de \keyword{Rijndael}, del cual solo toma algunos modos.
- Mientras que el algoritmo original puede tomar tamaños de bloque múltiplos de 32 bits\footnote{Con un mínimo de 128 bits y un máximo de 256.},
+ Mientras que el algoritmo original puede tomar tamaños de bloque múltiplos de 32 bits,\footnote{Con un mínimo de 128 bits y un máximo de 256.}
  \keyword{AES} únicamente opera con tamaños de bloque igual a 128 bits.
 
  Con el tamaño de las claves ocurre algo parecido, ya que \keyword{AES} solo soporta tamaños de 128, 192 y 256 bits,
@@ -197,10 +197,75 @@
  de los bloques de entrada. Está compuesto por 4 filas y 4 columnas, dando un total de 32 celdas,
  en las cuales se almacenan los 16 bytes que forman un bloque. \emph{\parencite{Reference26}}
 
+ \subsection{Transformaciones}
+
+ El algoritmo consta de ciertas fases, una de ellas consiste en someter el \emph{State}
+ a unas cuantas rondas de transformaciones. Estas transformaciones son las siguientes:
+
+ \begin{itemize}
+ \item \keyword{SubBytes} -- Mediante una transformación no lineal,
+ los bytes del \emph{State} son reemplazados por otros usando una tabla de sustitución.
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/SubBytes}
+   \decoRule
+   \caption[SubBytes (AES)]{Operación SubBytes para AES} \emph{\parencite{Reference27}}
+   \label{fig:SubBytes}
+ \end{figure}
+
+ \item \keyword{ShiftRows} -- Los bytes de las 3 últimas filas del \emph{State}
+ se desplazan de manera cíclica, cada fila con un offset distinto.
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/ShiftRows}
+   \decoRule
+   \caption[ShiftRows (AES)]{Operación ShiftRows para AES} \emph{\parencite{Reference28}}
+   \label{fig:ShiftRows}
+ \end{figure}
+
+ \item \keyword{MixColumns} -- Mediante una transformación lineal,
+ las columnas del \emph{State} se mezclan para producir unas nuevas.
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/MixColumns}
+   \decoRule
+   \caption[MixColumns (AES)]{Operación MixColumns para AES} \emph{\parencite{Reference29}}
+   \label{fig:MixColumns}
+ \end{figure}
+
+ \item \keyword{AddRoundKey} -- En esta transformación, una \emph{Round Key} se
+ añade al \emph{State} mediante una operación XOR.
+ La longitud de la \emph{Round Key} debe ser igual al tamaño del \emph{State}.
+
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.3]{Figures/AddRoundKey}
+   \decoRule
+   \caption[AddRoundKey (AES)]{Operación AddRoundKey para AES} \emph{\parencite{Reference30}}
+   \label{fig:AddRoundKey}
+ \end{figure}
+
+ \end{itemize}
+
+ \emph{\parencite{Reference26}}
+
  \subsection{Algoritmo}
 
  En \keyword{AES} el tamaño del bloque de entrada, del de salida y del \emph{State} es de 128 bits,
  y el tamaño de la clave puede tomar los valores de 128, 192 ó 256 bits.
+
+ Para cada bloque de entrada, la primera etapa del algoritmo consiste en generar las \emph{Round Keys} a partir de la clave,
+ usando el esquema de claves Rijndael.\footnote{Este esquema expande una clave en un número determinado de claves separadas.}
+
+ Una vez conseguidas las \emph{Round Keys}, se pasa por una ronda inicial especial
+ en la cual solo se realiza la transformación \emph{AddRoundKey}.
+
+ Después de esta etapa inicial, se pasa a las rondas habladas en el punto anterior.
+ El número de rondas que lleva a cabo el algoritmo depende del tamaño de la clave,
+ lo cual vemos representado en el Cuadro~\ref{tab:rounds}.
 
  \begin{table}
  \caption{Combinaciones para el número de rondas en AES.}
@@ -217,52 +282,12 @@
  \end{tabular}
  \end{table}
 
- El número de rondas que lleva a cabo el algoritmo depende del tamaño de la clave,
- lo cual vemos representado en el Cuadro~\ref{tab:rounds}. Cada ronda está compuesta
- por 4 transformaciones diferentes de los bytes del \emph{State}:
+ En todas estas rondas menos en la útlima, el orden de las transformaciones será siempre el mismo:
+ SubBytes -> ShiftRows -> MixColumns -> AddRoundKey
 
- \begin{itemize}
- \item \keyword{SubBytes}
+ La última ronda es idéntica a las anteriores salvo por el hecho de que la transformación \emph{MixColumns} no se realiza.
 
- \begin{figure}[ht]
-   \centering
-   \includegraphics[scale=0.3]{Figures/SubBytes}
-   \decoRule
-   \caption[SubBytes (AES)]{Operación SubBytes para AES} \emph{\parencite{Reference27}}
-   \label{fig:SubBytes}
- \end{figure}
-
- \item \keyword{ShiftRows}
-
- \begin{figure}[ht]
-   \centering
-   \includegraphics[scale=0.3]{Figures/ShiftRows}
-   \decoRule
-   \caption[ShiftRows (AES)]{Operación ShiftRows para AES} \emph{\parencite{Reference28}}
-   \label{fig:ShiftRows}
- \end{figure}
-
- \item \keyword{MixColumns}
-
- \begin{figure}[ht]
-   \centering
-   \includegraphics[scale=0.3]{Figures/MixColumns}
-   \decoRule
-   \caption[MixColumns (AES)]{Operación MixColumns para AES} \emph{\parencite{Reference29}}
-   \label{fig:MixColumns}
- \end{figure}
-
- \item \keyword{AddRoundKey}
-
- \begin{figure}[ht]
-   \centering
-   \includegraphics[scale=0.3]{Figures/AddRoundKey}
-   \decoRule
-   \caption[AddRoundKey (AES)]{Operación AddRoundKey para AES} \emph{\parencite{Reference30}}
-   \label{fig:AddRoundKey}
- \end{figure}
-
- \end{itemize}
+ El resultado de todo esto será el \emph{output} de nuestro bloque de entrada. \emph{\parencite{Reference26}}
 
  %----------------------------------------------------------------------------------------
 
