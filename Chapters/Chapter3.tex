@@ -17,7 +17,7 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.4]{Figures/JavaLogo}
+   \includegraphics[scale=0.2]{Figures/JavaLogo}
    \decoRule
    \caption[Java (Logo)]{Logo de Java} \emph{\parencite{Reference6}}
    \label{fig:JavaLogo}
@@ -27,7 +27,7 @@
 
  \section{Android}
 
- \keyword{Android} es un sistema operativo propiedad de Google, basado en el \emph{kernel} de Linux.
+ \keyword{Android} es un sistema operativo desarrollado por Google, basado en el \emph{kernel} de Linux.
  Está diseñado principalmente para dispositivos táctiles, como \emph{smartphones} y \emph{tablets}.
 
  \keyword{Android} es compatible con las librerías de Java, por lo que la mayoría de las aplicaciones están escritas en ese lenguaje.
@@ -46,32 +46,24 @@
 
  \section{Bouncy Castle}
 
- \keyword{Bouncy Castle (BC)} es una colección de APIs utilizados en criptografía.
- Estas APIs, entre otras cosas, proporcionan los siguientes servicios:
+ \keyword{Bouncy Castle (BC)} es una API utilizada en criptografía.
+ Esta API, entre otras cosas, proporciona los siguientes servicios:
  \begin{itemize}
  \item Una API criptográfica \emph{ligera} para Java y C\#.
  \item Un proveedor para Java Cryptography Extension (JCE)\footnote{JCE implementa encriptación, generación y protocolos de establecimiento de claves y algoritmos MAC.} y para Java Cryptography Architecture (JCA).
  \end{itemize}
 
- Todas las APIs de BC están mantenidas por una organización caritativa australiana, conocida como \keyword{The Legion of the Bouncy Castle}. \emph{\parencite{Reference4}}
-
- \begin{figure}[ht]
-   \centering
-   \includegraphics[scale=0.5]{Figures/BouncyCastle}
-   \decoRule
-   \caption[Legion of the Bouncy Castle]{The Legion of the Bouncy Castle, creadores de Bouncy Castle} \emph{\parencite{Reference4}}
-   \label{fig:BouncyCastle}
- \end{figure}
+ BC está mantenidos por una organización caritativa australiana, conocida como \keyword{The Legion of the Bouncy Castle}. \emph{\parencite{Reference4}}
 
  %----------------------------------------------------------------------------------------
 
  \section{Criptografía de clave simétrica}
 
- La \emph{confidencialidad} en las comunicaciones es la causa principal por la cual surgen los algoritmos de encriptación.
- La \keyword{criptografía de clave simétrica} nos permite de manera segura comunicarnos con otra persona (o máquina) de manera que un tercero,
- aun teniendo el mensaje cifrado, no pudiera sacar nada de información de él.
+ La \emph{confidencialidad} en las comunicaciones es el objetivo principal que se persigue con los algoritmos de encriptación.
+ La \keyword{criptografía de clave simétrica} nos permite comunicarnos con otra persona (o máquina) de manera que un tercero,
+ aun teniendo el mensaje cifrado, no pudiera extraer nada de información de él.
 
- Los algoritmos basados en este modelo utilizan un \emph{secreto} compartido entre los dos puntos que se quieren comunicar.
+ Los algoritmos basados en este modelo utilizan un \emph{secreto} compartido entre los dos extremos que se quieren comunicar.
  Una vez acordado, nadie que no posea este secreto podría descifrar ningún mensaje enviado por uno u otro extremo.
 
  \begin{figure}[ht]
@@ -82,23 +74,23 @@
    \label{fig:SymmetricKeyEncryption}
  \end{figure}
 
- El problema de este modelo viene en el intercambio de las claves.
+ El problema que tiene este modelo es el intercambio de las claves.
  Es necesario un canal seguro por el que comunicar las claves y este tipo de algoritmos no proveen ese servicio. \emph{\parencite{Reference19}}
 
- Es por ello que normalmente se mezcla este tipo de criptografía con otro conocido como \keyword{criptografía de clave pública}, el cual veremos más adelante.
+ Es por ello que normalmente se mezcla este tipo de criptografía con otro conocido como \keyword{criptografía de clave pública}, que veremos más adelante.
 
  %----------------------------------------------------------------------------------------
 
  \section{Cifrado por bloques}
 
- Dentro de la criptografía simétrica nos encontramos dos grandes algoritmos: los de tipo \emph{stream ciphers} y los de tipo \emph{block ciphers}.
+ Dentro de la criptografía simétrica nos encontramos dos grandes algoritmos: los de \keyword{flujo} y los de \keyword{bloques}.
  Nos centraremos en el segundo.
 
  Un algoritmo basado en \keyword{cifrado por bloques} es aquel que, como su propio nombre indica,
- realiza un cifrado primero dividiendo el \emph{plaintext} en bloques de un tamaño determinado\footnote{Cuando el tamaño del fichero que queremos encriptar no es múltiplo del tamaño de bloque, el bloque final tendrá un tamaño diferente al resto. Esto se soluciona con técnicas de padding, lo cual se explica en el siguiente punto.}
- y luego cifrando por separado estos bloques, dando como resultado un \emph{ciphertext}.
+ realiza un cifrado primero dividiendo el \emph{texto plano} en bloques de un tamaño determinado\footnote{Cuando el tamaño del fichero que queremos encriptar no es múltiplo del tamaño de bloque, el bloque final tendrá un tamaño diferente al resto. Esto se soluciona con técnicas de padding, lo cual se explica en el siguiente punto.}
+ y luego cifrando por separado estos bloques, dando como resultado un \emph{texto cifrado}.
 
- La mayoria de los \emph{block ciphers} son iterativos, es decir, realizan la misma operación un determinado número de veces (\emph{rounds}).
+ La mayoria de los \keyword{cifradores por bloques} son iterativos, es decir, realizan la misma operación un determinado número de veces o rondas (\emph{rounds}).
  Esta operación suele ser idéntica en todas las rondas, a excepción de la primera o la última, donde suele ser distinta.
 
  \begin{figure}[ht]
@@ -110,7 +102,8 @@
  \end{figure}
 
  Existen varios modos de operación para llevar a cabo un \keyword{cifrado por bloques}: ECB, CBC, OFB, CFB, etc.
- Cada uno de ellos opera los bloque de diferente forma, utilizando para ello técnicas muy diversas. \emph{\parencite{Reference21}}
+ Cada uno de ellos opera los bloque de diferente forma: algunos utilizan el bloque cifrado anterior para generar el nuevo,
+ otros utilizan combinaciones con estructuras del mismo tamaño que el bloque, etc. \emph{\parencite{Reference21}}
 
  %----------------------------------------------------------------------------------------
 
@@ -118,7 +111,7 @@
 
  \keyword{Padding} es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
 
- Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la itud que queremos para nuestro sistema.
+ Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema.
  Para solucionar esto existen multitud de técnicas de \keyword{padding}, desde agregar al final del bloque un byte con un cierto valor, hasta simplemente rellenar con ceros.
 
  El requisito indispensable que debe cumplir cualquier técnica de padding es que debe permitir al destinatario diferenciar los bytes del mensaje original de los byte de relleno. \emph{\parencite{Reference8}}
