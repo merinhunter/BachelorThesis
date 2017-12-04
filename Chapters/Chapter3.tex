@@ -17,7 +17,7 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.2]{Figures/JavaLogo}
+   \includegraphics[scale=0.3]{Figures/JavaLogo}
    \decoRule
    \caption[Java (Logo)]{Logo de Java} \emph{\parencite{Reference6}}
    \label{fig:JavaLogo}
@@ -30,9 +30,14 @@
  \keyword{Android} es un sistema operativo desarrollado por Google, basado en el \emph{kernel} de Linux.
  Está diseñado principalmente para dispositivos táctiles, como \emph{smartphones} y \emph{tablets}.
 
- \keyword{Android} es compatible con las librerías de Java, por lo que la mayoría de las aplicaciones están escritas en ese lenguaje.
- Desde la versión 4.4 de Android, se utiliza \keyword{Android Runtime} (\keyword{ART}) como entorno de ejecución\footnote{En versiones anteriores se utilizaba Dalvik y su máquina virtual.},
- el cual compila completamente el \emph{bytecode} a código máquina durante la instalación de la aplicación. \emph{\parencite{Reference7}}
+ Las aplicaciones de \keyword{Android} están escritas en Java.
+ Hasta la versión 4.4 de Android, se utilizaba Dalvik como máquina virtual con la compilación
+ en tiempo de ejecución (JIT) para ejecutar \emph{bytecode} Dalvik, que es una traducción del
+ \emph{Java bytecode}.
+
+ Android 4.4 introdujo el ART (Android Runtime) como un nuevo entorno de ejecución, que
+ compila el \emph{Java bytecode} durante la instalación de una aplicación. Desde Android
+ 5.0 se convirtió en la única opción en tiempo de ejecución.
 
  \begin{figure}[ht]
    \centering
@@ -65,12 +70,13 @@
 
  Los algoritmos basados en este modelo utilizan un \emph{secreto} compartido entre los dos extremos que se quieren comunicar.
  Una vez acordado, nadie que no posea este secreto podría descifrar ningún mensaje enviado por uno u otro extremo.
+ (Figura~\ref{fig:SymmetricKeyEncryption})
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.5]{Figures/SymmetricKeyEncryption}
+   \includegraphics[scale=0.4]{Figures/SymmetricKeyEncryption}
    \decoRule
-   \caption[Criptografía de clave simétrica (Esquema)]{Esquema general de la criptografía de clave simétrica} \emph{\parencite{Reference20}}
+   \caption[Criptografía de clave simétrica (Esquema)]{Esquema general de la criptografía de clave simétrica}
    \label{fig:SymmetricKeyEncryption}
  \end{figure}
 
@@ -95,9 +101,9 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.4]{Figures/ECB}
+   \includegraphics[scale=0.5]{Figures/ECB}
    \decoRule
-   \caption[Electronic Codebook (ECB)]{Cifrado usando el modo Electronic Codebook (ECB)} \emph{\parencite{Reference22}}
+   \caption[Electronic Codebook (ECB)]{Cifrado usando el modo Electronic Codebook (ECB)}
    \label{fig:ECB}
  \end{figure}
 
@@ -107,9 +113,9 @@
 
  %----------------------------------------------------------------------------------------
 
- \section{Padding}
+ \section{Relleno (Padding)}
 
- \keyword{Padding} es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
+ \keyword{Relleno (Padding)} es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
 
  Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema.
  Para solucionar esto existen multitud de técnicas de \keyword{padding}, desde agregar al final del bloque un byte con un cierto valor, hasta simplemente rellenar con ceros.
@@ -123,7 +129,7 @@
  \keyword{Cipher Block Chaining (CBC)} es uno de los modos de operación para cifrado por bloques que hemos mencionado antes,
  y el que se ha decidido elegir para este proyecto.
 
- Algunos modos como ECB (debido a como opera) tienen la característica de que, dada una clave determinada,
+ En algunos modos como ECB, dada una clave determinada,
  cualquier \emph{plaintext} siempre dará como resultado el mismo \emph{ciphertext}.
  Si, como es nuestro caso, esta característica supone un problema,
  se opta por otros modos de operación como CBC, el cual soluciona esto. \emph{\parencite{Reference23}}
@@ -138,9 +144,9 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.4]{Figures/CBC_enc}
+   \includegraphics[scale=0.5]{Figures/CBC_enc}
    \decoRule
-   \caption[Cipher Block Chaining (CBC) - Cifrado]{Cifrado usando el modo Cipher Block Chaining (CBC)} \emph{\parencite{Reference1}}
+   \caption[Cipher Block Chaining (CBC) - Cifrado]{Cifrado usando el modo Cipher Block Chaining (CBC)}
    \label{fig:CBC_enc}
  \end{figure}
 
@@ -150,13 +156,13 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.4]{Figures/CBC_dec}
+   \includegraphics[scale=0.5]{Figures/CBC_dec}
    \decoRule
-   \caption[Cipher Block Chaining (CBC) - Descifrado]{Descifrado usando Cipher Block Chaining (CBC)} \emph{\parencite{Reference2}}
+   \caption[Cipher Block Chaining (CBC) - Descifrado]{Descifrado usando Cipher Block Chaining (CBC)}
    \label{fig:CBC_dec}
  \end{figure}
 
- A la hora de desencriptar, la función inversa a la utilizada en la encriptación
+ A la hora de desencriptar, la misma función utilizada en la encriptación
  es usada para obtener cada bloque de texto a partir de los bloques cifrados.
  Una representación de este proceso lo encontramos en la Figura~\ref{fig:CBC_dec}.
 
@@ -174,19 +180,19 @@
  \keyword{Advanced Encryption Standard (AES)}, también conocido como \keyword{Rijndael} por sus creadores,
  es el resultado del proceso de búsqueda de un estándar para encriptación por parte del gobierno de los Estados Unidos.
 
- \keyword{AES} es una variante de \keyword{Rijndael}, del cual solo toma algunos modos.
+ \keyword{AES} es una variante de \keyword{Rijndael} (que a su vez es una variante de Square), del cual solo toma algunos modos.
  Mientras que el algoritmo original puede tomar tamaños de bloque múltiplos de 32 bits,\footnote{Con un mínimo de 128 bits y un máximo de 256.}
  \keyword{AES} únicamente opera con tamaños de bloque igual a 128 bits.
 
  Con el tamaño de las claves ocurre algo parecido, ya que \keyword{AES} solo soporta tamaños de 128, 192 y 256 bits,
  mientras que el algoritmo original soporta unos cuantos más. \emph{\parencite{Reference25}}
 
- \subsection{State}
+ \subsection{Estado (State)}
 
  Antes de meternos a hablar del algoritmo en sí, es necesario explicar una estructura que se usará
  constantemente.
 
- El \keyword{\emph{State}} es una estructura bidimensional de bytes con la que se operan los bytes
+ El \keyword{Estado (State)} es una estructura bidimensional de bytes con la que se operan los bytes
  de los bloques de entrada. Está compuesto por 4 filas y 4 columnas, dando un total de 32 celdas,
  en las cuales se almacenan los 16 bytes que forman un bloque. \emph{\parencite{Reference26}}
 
@@ -290,8 +296,8 @@
 
  \section{Criptografía de clave pública}
 
- Como hemos visto, uno de los problemas que tiene la \keyword{criptografía de clave simétrica} es que necesita de un medio seguro para compartir la clave de cifrado entre los componentes de la comunicación.
- La \keyword{criptografía de clave pública} soluciona este problema al no ser necesario crear un canal seguro para el establecimiento de la clave, ya que para este modelo se hace uso de un par de claves: una \emph{pública} y otra \emph{privada}.
+ Uno de los problemas que tiene la \keyword{criptografía de clave simétrica} es que usamos la misma clave para el cifrado y el descifrado, por lo que se hace necesaria su ocultación.
+ En la \keyword{criptografía de clave pública}, al hacer uso de dos claves, no es necesario mantener en secreto ambas. Aquella que ocultamos es llamada clave privada y la otra, pública.
 
  La esencia de este algoritmo radica en que un mensaje cifrado con una clave pública solo puede ser descifrado con su homóloga privada, y viceversa.
  De esta manera podemos, tal como su propio nombre indica, difundir públicamente nuestra clave \emph{pública} mientras mantenemos oculta la \emph{privada}.
@@ -305,9 +311,9 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.5]{Figures/PublicKeyEncryption}
+   \includegraphics[scale=0.3]{Figures/PublicKeyEncryption}
    \decoRule
-   \caption[Cifrado de clave pública (Esquema)]{Esquema general del cifrado de clave pública} \emph{\parencite{Reference5}}
+   \caption[Cifrado de clave pública (Esquema)]{Esquema general del cifrado de clave pública}
    \label{fig:PublicKeyEncryption}
  \end{figure}
 
@@ -316,13 +322,15 @@
  \section{RSA}
 
  Uno de los primeros algoritmos de criptografía pública (y el más utilizado hoy) es \keyword{RSA} (\keyword{Rivest–Shamir–Adleman})\footnote{RSA debe su nombre a sus creadores: Ron Rivest, Adi Shamir y Leonard Adleman.}.
- Una de sus características más distintivas es el uso de números primos y la factorización de sus productos en la generación de las claves y en la encriptación/desencriptación de los mensajes (\emph{factoring problem}).
+ Una de sus características más distintivas es el problema que plantea factorizar el producto de dos grandes números primos (\emph{factoring problem}).
+ El resultado de esta factorización es luego usado en la generación de las claves.
 
- \keyword{RSA} no es el más rápido de los algoritmos de criptografía que existen actualmente. Por ello, muchas veces se recurre a su uso en conjunto con otros algoritmos de criptografía simétrica, como \keyword{AES}. \emph{\parencite{Reference9}}
+ En general, los algortimos de criptografía de clave pública son bastante más lentos que los de clave simétrica.
+ Por ello, se suelen usar en conjunto con algún algoritmo de criptografía simétrica, como \keyword{AES}. \emph{\parencite{Reference9}}
 
  \subsection{Clave pública RSA}
 
- Dentro del conjunto del par de claves \keyword{RSA}, la \emph{pública} es la que se distribuye públicamente para que cualquiera que quisiera comunicarse con nosotros pudiera hacerlo de manera confidencial.
+ Dentro del conjunto del par de claves \keyword{RSA}, la \emph{pública} es aquella que no mantenemos en secreto para que cualquiera que quisiera comunicarse con nosotros pudiera hacerlo de manera confidencial.
  Este tipo de claves consta de dos elementos:
  \begin{itemize}
  \item \keyword{n} -- el módulo RSA, un entero positivo.
@@ -335,9 +343,9 @@
 
  Ahora que tenemos el módulo de la clave definido, es hora de generar un exponente público \keyword{e} adecuado.
  Para ello, haremos uso de la función de Carmichael\footnote{La función que se muestra solo es válida cuando n es el producto de dos números primos impares y distintos.}, la cual tiene la siguiente forma:
- \[ \lambda(n) = mcm\footnote{Mínimo común múltiplo.}(p - 1, q - 1) \]
+ \[ \lambda(n) = mcm(p - 1, q - 1) \]
  El exponente público \keyword{e} será aquel número entero comprendido entre 3 y (\keyword{n} - 1) que satisfaga:
- \[ MCD\footnote{Máximo común divisor.}(e, \lambda(n)) = 1 \] \emph{\parencite{Reference10}}
+ \[ MCD(e, \lambda(n)) = 1 \] \emph{\parencite{Reference10}}
 
  \subsection{Clave privada RSA}
 
@@ -370,7 +378,7 @@
 
  Antes hablamos de la necesidad de preservar la \emph{integridad} y la \emph{autentificación} en las comunicaciones.
  \keyword{RSASSA-PSS} es un algoritmo de firma digital que sirve precisamente para ello.
- Combina lo visto de RSA con un método de codificación llamado Probabilistic Signature Scheme (PSS).
+ Combina RSA con un método de codificación llamado Probabilistic Signature Scheme (PSS).
  \footnote{Las siglas SSA corresponden a Signature Scheme with Appendix, lo que quiere decir que la firma va añadida al final del mensaje o junto a él.}
 
  \subsection{Probabilistic Signature Scheme (PSS)}
@@ -381,9 +389,9 @@
 
  \begin{figure}[ht]
    \centering
-   \includegraphics[scale=2.0]{Figures/PSS}
+   \includegraphics[scale=0.6]{Figures/PSS}
    \decoRule
-   \caption[PSS (Esquema)]{PSS de acuerdo a PKCS \#1 V2.2 / RFC 8017} \emph{\parencite{Reference16}}
+   \caption[PSS (Esquema)]{PSS de acuerdo a PKCS \#1 V2.2 / RFC 8017}
    \label{fig:PSS}
  \end{figure}
 
@@ -399,8 +407,12 @@
 
  \section{HTTP}
 
- \keyword{Hypertext Transfer Protocol} (\keyword{HTTP}) es un protocolo con la ligereza y la velocidad necesarias para un sistema de información hipermedia\footnote{El término hipermedia engloba toda aquella información que incluye imagen, audio, vídeo, texto, etc.} colaborativo y distribuido.
+ \keyword{Hypertext Transfer Protocol (HTTP)} es un protocolo de nivel de aplicación
+ para sistemas de información distribuidos.
 
- Es un protocolo genérico orientado a objetos sin estado, que se puede utilizar para muchas tareas similares, como servidores de nombres y sistemas distribuidos orientados a objetos mediante la ampliación de los comandos (métodos) utilizados.
+ Es un protocolo genérico y sin estado que es usado para múltiples tareas como
+ la transferencia de hipertexto o la representación de sistemas de ficheros.
 
- Una característica de \keyword{HTTP} es la negociación de representación de datos, lo que permite que los sistemas se construyan independientemente del desarrollo de nuevas representaciones avanzadas. \emph{\parencite{Reference18}}
+ Una característica de HTTP es la negociación de la representación de los datos,
+ lo que permite construir sistemas indpendientemente de los datos que se vayan a
+ transmitir. \emph{\parencite{Reference18}}
