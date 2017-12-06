@@ -6,18 +6,32 @@
 
 %----------------------------------------------------------------------------------------
 
+% Define some commands to keep the formatting separated from the content
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+%----------------------------------------------------------------------------------------
+
 \section{Motivación}
 
-Las comunicaciones seguras nacen del deseo de protegernos: de proteger con quién nos comunicamos y el qué comunicamos.
+Las comunicaciones seguras nacen del deseo de protegernos: de proteger con quién
+nos comunicamos y el qué comunicamos.
 
-De este deseo surgen multitud de protocolos de seguridad que hoy en día usamos sin darnos cuenta.
-Desde una simple consulta web hasta la felicitación de Año Nuevo, nuestras comunicaciones pasan por diversas operaciones para preservar su seguridad.
+De este deseo surgen multitud de protocolos de seguridad que hoy en día usamos
+sin darnos cuenta. Desde una simple consulta web hasta la felicitación de Año
+Nuevo, nuestras comunicaciones pasan por diversas operaciones para preservar su
+seguridad.
 
-Esta seguridad viene generalmente proporcionada por la confianza que depositamos en ciertas organizaciones,
-entidades que crean una red de confianza sobre la que se sustenta todo este sistema.
-Pero, ¿qué sucede si de quién nos queremos proteger es de ellos? ¿Por qué tengo
-que confiar en que una entidad gubernamental sea la que mantenga la seguridad
-de mis comunicaciones? ¿Por qué no puedo tener mi propia red de confianza?
+Esta seguridad viene generalmente proporcionada por la confianza que depositamos
+en ciertas organizaciones, entidades que crean una red de confianza sobre la que
+se sustenta todo este sistema. Pero, ¿qué sucede si de quién nos queremos
+proteger es de ellos? ¿Por qué tengo que confiar en que una entidad
+gubernamental sea la que mantenga la seguridad de mis comunicaciones? ¿Por qué
+no puedo tener mi propia red de confianza?
 
 Con esta idea comienza el desarrollo de una herramienta que nos permita crear
 nuestra propia red de confianza, con la que poder mantener comunicaciones
@@ -30,7 +44,7 @@ seguras.
 La estructura que se va a seguir en este proyecto es la siguiente:
 
 \begin{itemize}
-  \item En el Capítulo~\ref{Chapter2} se presentan los objetivos que se persiguen con este proyecto y un modelo de atacante para el mismo.
+  \item En el Capítulo~\ref{Chapter2} se presentan los objetivos que se persiguen con este proyecto y un modelo de amenaza para el mismo.
   \item En el Capítulo~\ref{Chapter3} se explican varios conceptos y tecnologías que ya existen y que se han usado para llevar a cabo el proyecto.
   \item En el Capítulo~\ref{Chapter4} se detallan los diferentes prototipos y la arquitectura de seguridad de la aplicación.
   \item En el Capítulo~\ref{Chapter5} se exponen los resultados obtenidos con ejemplos y los problemas encontrados durante el desarrollo del proyecto.

@@ -28,18 +28,24 @@ objetivos más específicos:
 
 %----------------------------------------------------------------------------------------
 
-\section{Modelo de atacante}
+\section{Modelo de amenaza}
 
-En criptografía, un modelo de atacante especifica que recursos y que tipo de acceso
-tiene un criptoanalista a un sistema cuando intenta \emph{romper} un mensaje cifrado
-generado por este mismo sistema.
+En criptografía, un modelo de amenaza (\emph{threat model}) especifica que tipo
+de amenazas potenciales a un sistema puede realizar un individuo (o grupo) con
+unos determinados recursos.
 
-Existen varios modelos de atacante:
+Para nuestro caso vamos a poner como modelo de amenaza a un usuario con algunos
+conocimientos de criptoanálisis, utilizando para el ataque una máquina con un
+procesamiento computacional estándar.\footnote{De nuestro modelo de amenaza
+quedan fuera aquellos en los que se presupone que quien nos ataca es una compañía
+tecnológica del tipo Intel, Google, Qualcomm o algún gobierno importante como el
+de China, Corea, Rusia o Estados Unidos.}
+
+Un usuario de este tipo podría realizar los siguientes tipos de ataque:
 
 \begin{itemize}
-  \item Ataques sobre el texto cifrado -- En este modelo el atacante dispone únicamente
-  del texto cifrado y no tiene acceso al texto plano. Este modelo es el más débil de todos,
-  ya que para que un atacante suponga un riesgo, debe conocer algo sobre el texto plano.
+  \item Ataques sobre el texto cifrado -- En este tipo de ataques el atacante
+  dispone únicamente del texto cifrado y no tiene acceso al texto plano.
   Ejemplos de este modelo son los ataques por fuerza bruta, en los que se prueba
   cada una de las posibles combinaciones para una clave hasta dar con la correcta.
 
@@ -49,7 +55,7 @@ Existen varios modelos de atacante:
   obtener la clave de cifrado a partir de estos pares, con el fin de poder
   desencriptar futuras comunicaciones.
 
-  \item Ataque de texto plano selectivo -- En este modelo el atacante puede
+  \item Ataque de texto plano selectivo -- En este tipo de ataques el atacante puede
   seleccionar un número indeterminado de textos planos y obtener sus equivalentes
   cifrados. Con esto, un atacante puede probar distintas combinaciones y encontrar
   patrones sobre el texto plano para explotar alguna vulnerabilidad.
@@ -60,18 +66,4 @@ Existen varios modelos de atacante:
 
   \item Ataques sobre la clave -- En este tipo de ataques el atacante dispone de
   alguna información acerca de la clave de cifrado.
-
-  \item Ataque de canal lateral -- Este modelo de ataque se basa en usar
-  información especial sobre el proceso de encriptación y desencriptación de un
-  mensaje con el fin de obtener algo de información de él. Se utilizan recursos
-  como el ruido eléctrico que genera una operación de cifrado o el tiempo que
-  toma en ejecutarse.
 \end{itemize} \emph{\parencite{Reference20}}\\
-
-Todos estos modelos descritos serán más o menos efectivos en función de los
-recursos de los que disponga el atacante. Con el proyecto se pretende hacer
-frente a todos ellos para un atacante estándar.
-
-Si un atacante con unos recursos equiparables a los de una nación intentara
-romper las medidas de seguridad implementadas, es posible que no se puediera
-garantizar el objetivo principal que persigue este proyecto.
