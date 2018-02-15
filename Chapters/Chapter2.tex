@@ -22,7 +22,7 @@ objetivos más específicos:
 
 \begin{itemize}
   \item Proporcionar un canal por el que transmitir la información.
-  \item Desarrollar un esquema que permita encriptar y desencriptar la información que queremos transmitir.
+  \item Desarrollar un esquema que permita cifrar y descifrar la información que queremos transmitir.
   \item Diseñar una forma de comprobar la integridad y la autenticación de la información.
 \end{itemize}
 
@@ -32,16 +32,21 @@ objetivos más específicos:
 
 En criptografía, un modelo de amenaza (\emph{threat model}) especifica que tipo
 de amenazas potenciales a un sistema puede realizar un individuo (o grupo) con
-unos determinados recursos.
+unos determinados recursos. En base a estas amenazas, se desarrolla un
+determinado esquema de seguridad para poder contrarrestarlas.
 
-Para nuestro caso vamos a poner como modelo de amenaza a un usuario con algunos
-conocimientos de criptoanálisis, utilizando para el ataque una máquina con un
-procesamiento computacional estándar.\footnote{De nuestro modelo de amenaza
-quedan fuera aquellos en los que se presupone que quien nos ataca es una compañía
-tecnológica del tipo Intel, Google, Qualcomm o algún gobierno importante como el
-de China, Corea, Rusia o Estados Unidos.}
+Nuestro modelo de amenaza será un atacante con conocimientos de criptoanálisis,
+utilizando para el ataque una máquina con un procesamiento computacional estándar.
 
-Un usuario de este tipo podría realizar los siguientes tipos de ataque:
+Los puntos más vulnerables de nuestro modelo son el hardware y el software, por
+lo que dejamos fuera a aquellas compañías que han trabajado en su desarrollo,
+como Intel, Google, Qualcomm, etc.
+
+Debido a los recursos que poseen también dejamos fuera de nuestro modelo a
+cualquiera de los gobiernos de las grandes potencias del mundo, como China, Corea,
+Rusia o Estados Unidos.
+
+Un atacante de nuestro modelo de amenaza podría realizar los siguientes tipos de ataque:
 
 \begin{itemize}
   \item Ataques sobre el texto cifrado -- En este tipo de ataques el atacante
@@ -66,4 +71,10 @@ Un usuario de este tipo podría realizar los siguientes tipos de ataque:
 
   \item Ataques sobre la clave -- En este tipo de ataques el atacante dispone de
   alguna información acerca de la clave de cifrado.
+
+  \item Man in the middle
+
+  \item Ataques de side channel
+
+  \item Ataques de reply
 \end{itemize} \emph{\parencite{Reference20}}\\
