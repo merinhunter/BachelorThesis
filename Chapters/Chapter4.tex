@@ -25,14 +25,13 @@ de un tamaño dado, y luego poder recomponerlo. Para ello se implementaron algun
   \item \keyword{Slice} -- Un Slice es uno de los fragmentos en los que un
   fichero original se ha dividido. Está formado por una cabecera (Header) y un
   array de bytes en el que se almacena el contenido del segmento del fichero.
-  (Figura~\ref{fig:Slice_Header})
+  (Figura~\ref{fig:Slice_Header_1})
 
   \item \keyword{Header} -- En esta clase se almacenan los metadatos de los
   Slices. Se guardan datos como un contador, el número total de Slices
   para un fichero, un ID para la sesión\footnote{En esta primera iteración de la
-  aplicación, el ID para identificar la sesión era un resumen Hash del fichero.},
-  el tamaño original del fichero y una firma de los datos a los que acompaña la cabecera.
-  (Figura~\ref{fig:Slice_Header})
+  aplicación, el ID para identificar la sesión era un resumen Hash del fichero.}
+  y el tamaño original del fichero. (Figura~\ref{fig:Slice_Header_1})
 
   \item \keyword{Slicer} -- Esta clase es la \emph{fábrica} de Slices. Recibe
   un fichero, un tamaño de bloque y un ID para identificar la sesión. Lee del
@@ -47,10 +46,10 @@ de un tamaño dado, y luego poder recomponerlo. Para ello se implementaron algun
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.4]{Figures/Slice_Header}
+  \includegraphics[scale=0.4]{Figures/Slice_Header_1}
   \decoRule
-  \caption[Slice - Header]{Esquema general de las clases Slice y Header}
-  \label{fig:Slice_Header}
+  \caption[Slice - Header (Versión 1)]{Esquema general de las clases Slice y Header (Versión 1)}
+  \label{fig:Slice_Header_1}
 \end{figure}
 
 \begin{figure}[ht]
@@ -64,7 +63,7 @@ de un tamaño dado, y luego poder recomponerlo. Para ello se implementaron algun
 Al tratarse de un prototipo bastante sencillo, no dió muchos problemas, se
 alcanzaron fácilmente los objetivos buscados.
 
-\subsection{Shatter 0.2}
+\subsection{Shatter 0.5}
 
 En esta segunda versión, el objetivo era proporcionar confidencialidad a las
 Slices. Para llevarlo a cabo se implementaron las siguientes clases:
@@ -73,15 +72,15 @@ Slices. Para llevarlo a cabo se implementaron las siguientes clases:
   \item \keyword{EncFile} -- Viene a ser una Slice cifrada. A parte de los datos
   encriptados de la Slice, también incluye una cabecera (EncFileHeader) con
   algunos datos importantes y una pseudocabecera (FalseHeader) con datos menores.
-  (Figura~\ref{fig:EncFile_Header})
+  (Figura~\ref{fig:EncFile_Header_1})
 
   \item \keyword{EncFileHeader} -- Como decía antes, esta cabecera se usa para
-  almacenar algunos metadatos importantes: el vector de inicialización (IV) que
-  se ha usado para cifrar la Slice y una firma para el IV.
-  (Figura~\ref{fig:EncFile_Header})
+  almacenar algunos metadatos importantes como, en este caso, el vector de
+  inicialización (IV) que se ha usado para cifrar la Slice.
+  (Figura~\ref{fig:EncFile_Header_1})
 
   \item \keyword{KeyFile} -- Esta clase se utiliza para almacenar la clave
-  simétrica que se ha utilizado para crear los EncFiles. También va firmada.
+  simétrica que se ha utilizado para crear los EncFiles.
 
   \item \keyword{AESLibrary} -- Básicamente, una clase que se encarga de
   generar de manera aleatoria y segura claves simétricas y vectores de
@@ -106,10 +105,10 @@ Slices. Para llevarlo a cabo se implementaron las siguientes clases:
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.4]{Figures/EncFile_Header}
+  \includegraphics[scale=0.4]{Figures/EncFile_Header_1}
   \decoRule
-  \caption[EncFile - EncFileHeader]{Esquema general de las clases EncFile y EncFileHeader}
-  \label{fig:EncFile_Header}
+  \caption[EncFile - EncFileHeader (Versión 1)]{Esquema general de las clases EncFile y EncFileHeader (Versión 1)}
+  \label{fig:EncFile_Header_1}
 \end{figure}
 
 \begin{figure}[ht]
@@ -129,5 +128,69 @@ Slices. Para llevarlo a cabo se implementaron las siguientes clases:
 \end{figure}
 
 A pesar de que la seguridad que proporciona este prototipo no está completa (Ya
-que es propenso a algunos ataques), sienta las bases de lo que es la arquitectura
-de seguridad de la aplicación.
+que es propenso a algunos ataques), sienta las bases de lo que será
+la arquitectura de seguridad de la aplicación.
+
+\subsection{Shatter 0.8}
+
+A pesar de que ya teníamos confidencialidad en las Slices, había que
+proporcionársela también al KeyFile. En este prototipo se crearon las siguientes
+clases para lograrlo:
+
+\begin{itemize}
+  \item \keyword{EncKeyFile} -- En esta clase se almacena la clave simétrica
+  cifrada usando para ello una clave asimétrica. Tiene una cabecera en la que
+  se guardan algunos datos importantes.
+
+  \item \keyword{EncKeyFileHeader} -- La cabecera del EncKeyFile. En ella se
+  almacena una firma cifrada (HMAC) de la clave simétrica sin cifrar.
+
+  \item \keyword{RSALibrary} -- Esta clase es la encargada de generar un par de
+  claves asimétricas, de escribirlas y leerlas de un fichero y de cifrar
+  un texto plano a uno cifrado, y viceversa.
+
+  \item \keyword{Signature} -- Básicamente una clase para contener una firma.
+
+  \item \keyword{SecureSignature} -- Contiene la firma comentada antes pero
+  cifrada usando una clave asimétrica. Es una HMAC.
+
+  \item \keyword{Signer} -- La clase que se encarga de recibir Slices, EncFiles,
+  KeyFiles y demás y devolverlos firmados. Asimismo, se encarga de comprobar
+  las firmas de todos estos ficheros para preservar la autenticidad de la
+  información que portan.
+
+  \item \keyword{RSAPSS} -- Esta clase incorpora todos los métodos necesarios
+  para generar, a partir de un texto plano, un texto codificado y cifrado
+  usando el algoritmo RSASSA-PSS. También realiza el proceso inverso y puede
+  verificar las firmas.
+\end{itemize}
+
+Con el prototipo anterior nos dimos cuenta de que, a parte de que teníamos que
+generar un modo seguro de transmitir la clave simétrica, también teniamos que
+proporcionar una manera de comprobar la autenticidad de los datos.
+
+Debido a ello, incluimos una firma en el KeyFile y en las cabeceras de las
+Slices y EncFiles (Figuras~\ref{fig:Slice_Header_2} y~\ref{fig:EncFile_Header_2}).
+Nos dimos cuenta de que algunas firmas iban a ir en claro cuando viajasen de un
+equipo a otro. Por ello se decidió la creación de una firma cifrada (HMAC),
+para evitar posibles "mirones".
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.4]{Figures/Slice_Header_2}
+  \decoRule
+  \caption[Slice - Header (Versión final)]{Esquema general de las clases Slice y Header (Versión final)}
+  \label{fig:Slice_Header_2}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.4]{Figures/EncFile_Header_2}
+  \decoRule
+  \caption[EncFile - EncFileHeader (Versión final)]{Esquema general de las clases EncFile y EncFileHeader (Versión final)}
+  \label{fig:EncFile_Header_2}
+\end{figure}
+
+Además de las clases mencionadas anteriormente, también se desarrollaron otras
+clases para generar Strings aleatorios, para leer y escribir los distintos
+ficheros que intervienen en la aplicación, etc.
