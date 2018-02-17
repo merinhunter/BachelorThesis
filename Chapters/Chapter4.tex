@@ -45,9 +45,6 @@ de un tamaño dado, y luego poder recomponerlo. Para ello se implementaron algun
   alguno falta genera un log de errores. (Figura~\ref{fig:Assembler})
 \end{itemize}
 
-Al tratarse de un prototipo bastante sencillo, no dió muchos problemas, se
-alcanzaron fácilmente los objetivos buscados.
-
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.4]{Figures/Slice_Header}
@@ -64,6 +61,9 @@ alcanzaron fácilmente los objetivos buscados.
   \label{fig:Assembler}
 \end{figure}
 
+Al tratarse de un prototipo bastante sencillo, no dió muchos problemas, se
+alcanzaron fácilmente los objetivos buscados.
+
 \subsection{Shatter 0.2}
 
 En esta segunda versión, el objetivo era proporcionar confidencialidad a las
@@ -73,10 +73,12 @@ Slices. Para llevarlo a cabo se implementaron las siguientes clases:
   \item \keyword{EncFile} -- Viene a ser una Slice cifrada. A parte de los datos
   encriptados de la Slice, también incluye una cabecera (EncFileHeader) con
   algunos datos importantes y una pseudocabecera (FalseHeader) con datos menores.
+  (Figura~\ref{fig:EncFile_Header})
 
   \item \keyword{EncFileHeader} -- Como decía antes, esta cabecera se usa para
   almacenar algunos metadatos importantes: el vector de inicialización (IV) que
   se ha usado para cifrar la Slice y una firma para el IV.
+  (Figura~\ref{fig:EncFile_Header})
 
   \item \keyword{KeyFile} -- Esta clase se utiliza para almacenar la clave
   simétrica que se ha utilizado para crear los EncFiles. También va firmada.
@@ -95,10 +97,36 @@ Slices. Para llevarlo a cabo se implementaron las siguientes clases:
   una clave simétrica para un algoritmo establecido y, con ella, inicializa una
   instancia de un SymmetricCipher. A continuación se le pasa un array de Slices
   del cual genera un array de EncFiles, que es el que retorna.
+  (Figura~\ref{fig:Encryptor})
 
   \item \keyword{Decryptor} -- La contraparte del Encryptor. Realiza el proceso
   inverso y devuelve un array de Slices a partir de uno de EncFiles.
+  (Figura~\ref{fig:Decryptor})
 \end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.4]{Figures/EncFile_Header}
+  \decoRule
+  \caption[EncFile - EncFileHeader]{Esquema general de las clases EncFile y EncFileHeader}
+  \label{fig:EncFile_Header}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.5]{Figures/Encryptor}
+  \decoRule
+  \caption[Encryptor]{Esquema general del funcionamiento del Encryptor}
+  \label{fig:Encryptor}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.5]{Figures/Decryptor}
+  \decoRule
+  \caption[Decryptor]{Esquema general del funcionamiento del DEcryptor}
+  \label{fig:Decryptor}
+\end{figure}
 
 A pesar de que la seguridad que proporciona este prototipo no está completa (Ya
 que es propenso a algunos ataques), sienta las bases de lo que es la arquitectura
