@@ -157,13 +157,21 @@ clases para lograrlo:
   \item \keyword{Signer} -- La clase que se encarga de recibir Slices, EncFiles,
   KeyFiles y demás y devolverlos firmados. Asimismo, se encarga de comprobar
   las firmas de todos estos ficheros para preservar la autenticidad de la
-  información que portan.
+  información que portan. (Figura~\ref{fig:Signer})
 
   \item \keyword{RSAPSS} -- Esta clase incorpora todos los métodos necesarios
-  para generar, a partir de un texto plano, un texto codificado y cifrado
+  para generar, a partir de un texto plano, un texto codificado y firmado
   usando el algoritmo RSASSA-PSS. También realiza el proceso inverso y puede
   verificar las firmas.
 \end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.4]{Figures/Signer}
+  \decoRule
+  \caption[Signer]{Esquema general del funcionamiento del Signer}
+  \label{fig:Signer}
+\end{figure}
 
 Con el prototipo anterior nos dimos cuenta de que, a parte de que teníamos que
 generar un modo seguro de transmitir la clave simétrica, también teniamos que
