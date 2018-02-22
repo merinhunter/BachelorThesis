@@ -123,7 +123,7 @@ Slices. Para llevarlo a cabo se implementaron las siguientes clases:
   \centering
   \includegraphics[scale=0.5]{Figures/Decryptor}
   \decoRule
-  \caption[Decryptor]{Esquema general del funcionamiento del DEcryptor}
+  \caption[Decryptor]{Esquema general del funcionamiento del Decryptor}
   \label{fig:Decryptor}
 \end{figure}
 
@@ -174,7 +174,7 @@ clases para lograrlo:
 \end{figure}
 
 Con el prototipo anterior nos dimos cuenta de que, a parte de que teníamos que
-generar un modo seguro de transmitir la clave simétrica, también teniamos que
+generar un modo seguro de transmitir la clave simétrica, también teníamos que
 proporcionar una manera de comprobar la autenticidad de los datos.
 
 Debido a ello, incluimos una firma en el KeyFile y en las cabeceras de las
@@ -202,3 +202,34 @@ para evitar posibles "mirones".
 Además de las clases mencionadas anteriormente, también se desarrollaron otras
 clases para generar Strings aleatorios, para leer y escribir los distintos
 ficheros que intervienen en la aplicación, etc.
+
+\subsection{Shatter 1.0}
+
+Esta versión final de la aplicación está marcada por el salto a la plataforma
+Android. Gran parte del código desarrollado en los anteriores prototipos se
+siguió utilizando, sin embargo hubo que cambiar algunas clases:
+
+\begin{itemize}
+  \item \keyword{KeyStoreHandler} -- Esta clase se usa para realizar todas las
+  operaciones necesarias con el KeyStore de Android. Se encarga de almacenar las
+  claves, recuperarlas, usarlas para encriptar, firmar, etc.
+
+  \item \keyword{HTTPClient} -- Un cliente HTTP muy sencillo que únicamente
+  realiza peticiones GET.
+
+  \item \keyword{ExternalStorage} -- Para interactuar con el External Storage de
+  Android se creó una clase que incorpora algunos métodos para conseguir paths,
+  descriptores de fichero o crear directorios.
+\end{itemize}
+
+A parte del desarrollo de estas clases, se trabajó también en un servidor HTTP
+dedicado para almacenar los mensajes enviados por los distintos usuarios de la
+aplicación.
+
+Algunas clases, debido al cambio de plataforma, tuvieron que ser eliminadas.
+El cambio más notorio fue la desaparición de las clases RSALibrary y RSAPSS,
+ambas sustituidas por KeyStoreManager.
+
+Un cambio menor fue la generación de un ID de sesión aleatorio para las
+cabeceras de algunas clases (Anteriormente se usaba un resumen hash del
+fichero).
