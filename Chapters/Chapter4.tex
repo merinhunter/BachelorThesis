@@ -233,3 +233,24 @@ ambas sustituidas por KeyStoreManager.
 Un cambio menor fue la generación de un ID de sesión aleatorio para las
 cabeceras de algunas clases (Anteriormente se usaba un resumen hash del
 fichero).
+
+El esquema general de la aplicación se puede dividir en dos: Una primera parte
+se encarga de la división y cifrado del fichero (Figura~\ref{fig:abstractA}). La
+otra se encarga de descargar del servidor los fragmentos cifrados y recomponer
+el fichero original (Figura~\ref{fig:abstractB}).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.5]{Figures/abstractA}
+  \decoRule
+  \caption[Slice - Encrypt]{Esquema general de Slice - Encrypt, la primera parte en el proceso de comunicación de la aplicación}
+  \label{fig:abstractA}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.5]{Figures/abstractB}
+  \decoRule
+  \caption[Decrypt - Compose]{Esquema general de Decrypt - Compose, la parte final en el proceso de comunicación de la aplicación}
+  \label{fig:abstractB}
+\end{figure}
