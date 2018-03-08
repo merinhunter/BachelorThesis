@@ -11,3 +11,33 @@
 %----------------------------------------------------------------------------------------
 
 \section{Problemas encontrados}
+
+A lo largo de la etapa que supuso el desarrollo de la aplicación, me encontré
+con varios problemas que dificultaron la finalización del proyecto.
+
+El mayor problema con el que se tuvo que lidiar fue el de no haber creado una
+parte portable que hiciera más fácil la migración a Android. Algunas librerías
+usadas cuando el proyecto solo era una aplicación escrita en Java tenían ciertas
+dependencias, las cuales no se encontraban en ninguna librería Java usada en
+Android. Además, el uso del KeyStore de Android para almacenar las claves
+exigía realizar el cifrado asimétrico, las firmas y la generación de las claves
+de una manera determinada, lo que supuso la eliminación de las clases que se
+encargaban anteriormente de ello (RSALibrary y RSAPSS). Aunque algunos de estos
+problemas no se habrían podido solucionar aun teniendo una parte portable, sin
+duda habría supuesto un ahorro considerable de tiempo.
+
+A raíz de lo anterior, la mayoría de las clases no estuvieron bien definidas
+desde un principio. Esto supuso muchos cambios a lo largo del desarrollo de la
+aplicación (Cabeceras, modos de cifrado, registros...). De nuevo, una buena
+planificación habría ahorrado una gran cantidad de tiempo y energía.
+
+Pero no todos los problemas encontrados tuvieron que ver con la desorganización.
+La aplicación ahora cuenta con un servidor dedicado pero, en un principio, se
+pensó en utilizar un servicio externo para el almacenamiento de los mensajes
+enviados por los usuarios. De varias ideas que salieron, se eligió la aplicación
+Pastebin\footnote{\url{https://pastebin.com/}}, ya que permite la subida anónima de
+texto plano. La idea era que la aplicación subiera los distintos fragmentos
+cifrados a la plataforma, permitiendo al resto de usuarios su descarga. Sin
+embargo, la existencia de límites en el número de mensajes enviados o en la
+longitud de los mismos hicieron que se desechara la idea en favor de un
+servidor dedicado.
