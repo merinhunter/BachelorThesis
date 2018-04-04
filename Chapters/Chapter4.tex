@@ -8,55 +8,64 @@
 
 \section{Arquitectura de seguridad}
 
-Para desarrollar este punto, la sección se va a dividir en las distintas
-propiedades de la seguridad de la información que posee la aplicación:
+Para entender la arquitectura de seguridad de la aplicación, es importante
+distinguir entre las siguientes propiedades de la seguridad de la información:
+confidencialidad, integridad y autenticación.
+%Para desarrollar este punto, la sección se va a dividir en las distintas
+%propiedades de la seguridad de la información que posee la aplicación:
 
 \subsection{Confidencialidad}
 
-Desde un principio se pensó en criptografía de clave simétrica para el cifrado
-de la información. Y, debido a su buena reputación, AES como algoritmo de
-cifrado.
+%Desde un principio se pensó en criptografía de clave simétrica para el cifrado
+%de la información. Y, debido a su buena reputación, AES como algoritmo de
+%cifrado.
+Para el cifrado de la información se utiliza criptografía de clave simétrica, ya
+que ofrece una mayor velocidad de cifrado frente a otros modelos. Debido a que
+puede funcionar tanto sobre hardware como sobre software, a que es un estándar
+del cifrado simétrico y a que no tiene debilidades conocidas, AES es el
+algoritmo de cifrado simétrico que se utiliza en esta aplicación.
+(Véase~\ref{AES})
 
-De entre todos los tamaños de clave disponibles se optó por el de
-128 bits, ya que ofrecía un nivel de seguridad adecuado para nuestra aplicación.
+De entre todos los tamaños de clave disponibles se ha optado por el de
+128 bits, ya que ofrece un nivel de seguridad adecuado para la aplicación.
 Además, un nivel superior habría supuesto una mayor carga computacional.
 
-Toda este despliegue no tendría sentido si no se incluyese confidencialidad a
-la clave utilizada. Por ello, se utilizó un sistema de claves asimétricas para
-proteger la clave simétrica. Debido otra vez a su uso extendido, se utilizó RSA
-como algoritmo de cifrado.
+Igualmente, es necesario cifrar la clave simétrica utilizada. Para ello se
+utiliza un sistema de cifrado asimétrico para proteger la clave. Debido otra vez
+a su estandarización, se utiliza RSA como algoritmo de cifrado asimétrico.
+(Véase~\ref{RSA})
 
-Ya que el número de operaciones de cifrado asimétrico sería menor que el del
-simétrico, se decidió utilizar el tamaño máximo para una clave RSA: 4096 bits.
+Ya que el número de operaciones de cifrado asimétrico es menor que el del
+simétrico, se utiliza el tamaño máximo para una clave RSA: 4096 bits.
 
 \subsection{Integridad}
 
-También era importante que el contenido del mensaje permaneciese intacto. Para
-ello había que incluir algún mecanismo de resumen que nos asegurase la
-integridad del mensaje.
+%También era importante que el contenido del mensaje permaneciese intacto. Para
+%ello había que incluir algún mecanismo de resumen que nos asegurase la
+%integridad del mensaje.
+También es importante que el mensaje permanezca íntegro. Para ello se ha
+incluido un mecanismo de resumen.
 
-En un principio se barajó utilizar PKCS1 V1.5, ya que me resultaba familiar de
-la asignatura de seguridad. Sin embargo, algunos profesores me recomendaron
-utilizar PSS, ya que las prestaciones de seguridad eran mejores.
-
-Efectivamente, el uso de una \emph{salt} en la generación del resumen
-codificado hacía de PSS un algoritmo mas consistente frente a determinados
-ataques enfocados en la obtención del mensaje original a partir de su resumen.
+De entre algunos algoritmos de resumen se ha decidido utilizar PSS. Este
+algoritmo, entre otras cosas, combina el uso de una \emph{salt} con un resumen
+hash, lo cual lo hace más robusto frente a determinados ataques enfocados en la
+obtención del mensaje original a partir de su resumen. (Véase~\ref{PSS})
 
 \subsection{Autenticación}
 
-El destinatario tenía que estar seguro de que el mensaje venía de la persona
-que se supone que se lo había enviado. Para lograrlo se incluyó junto al mensaje
-una MAC.\footnote{Una MAC es una porción de información utilizada para
-autenticar un mensaje.}
+El destinatario tiene que poder autenticar al autor del mensaje. Para lograrlo
+se incluye junto al mensaje una HMAC. (Véase~\ref{HMAC})
 
-Se utilizó como algoritmo RSASSA-PSS, ya que combinaba los algoritmos utilizados
-para preservar la confidencialidad y la integridad. Este algoritmo codifica el
-mensaje utilizando para ello PSS y luego firma (cifra) el mensaje usando RSA.
+Se utiliza como algoritmo de firma RSASSA-PSS, ya que combina los algoritmos
+utilizados para preservar la confidencialidad y la integridad. Este algoritmo
+codifica el mensaje utilizando para ello PSS y luego firma (cifra) el mensaje
+usando RSA. (Véase~\ref{RSASSA-PSS})
 
-Para proporcionarle aún más seguridad a la firma se decidió convertir la MAC en
-una HMAC, lo que implicó cifrar la MAC con la clave pública del destinatario de
-forma que solo él pudiera acceder a su contenido.
+%Para proporcionarle aún más seguridad a la firma se decidió convertir la MAC en
+%una HMAC, lo que implicó cifrar la MAC con la clave pública del destinatario de
+%forma que solo él pudiera acceder a su contenido.
+Para proporcionar confidencialidad a la firma, esta va cifrada usando la clave
+pública del destinatario, de forma que nadie más pueda acceder a su contenido.
 
 %----------------------------------------------------------------------------------------
 

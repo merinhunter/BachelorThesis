@@ -177,6 +177,8 @@ ya que las mútiples funciones de descifrado que se realizan no dependen de ning
 
 \section{AES}
 
+\label{AES}
+
 \keyword{Advanced Encryption Standard (AES)}, también conocido como \keyword{Rijndael} por sus creadores,
 es el resultado del proceso de búsqueda de un estándar para encriptación por parte del gobierno de los Estados Unidos.
 
@@ -320,6 +322,8 @@ Así conseguimos preservar la \emph{integridad} y la \emph{autentificación} del
 
 \section{RSA}
 
+\label{RSA}
+
 Uno de los primeros algoritmos de criptografía pública (y el más utilizado hoy) es \keyword{RSA} (\keyword{Rivest–Shamir–Adleman})\footnote{RSA debe su nombre a sus creadores: Ron Rivest, Adi Shamir y Leonard Adleman.}.
 Una de sus características más distintivas es el problema que plantea factorizar el producto de dos grandes números primos (\emph{factoring problem}).
 El resultado de esta factorización es luego usado en la generación de las claves.
@@ -375,16 +379,39 @@ De esta manera, recuperaría el mensaje original.\footnote{Para cifrar con una c
 
 \section{RSASSA-PSS}
 
+\label{RSASSA-PSS}
+
 Antes hablamos de la necesidad de preservar la \emph{integridad} y la \emph{autentificación} en las comunicaciones.
 \keyword{RSASSA-PSS} es un algoritmo de firma digital que sirve precisamente para ello.
 Combina RSA con un método de codificación llamado Probabilistic Signature Scheme (PSS).
 \footnote{Las siglas SSA corresponden a Signature Scheme with Appendix, lo que quiere decir que la firma va añadida al final del mensaje o junto a él.}
 
+\subsection{\emph{salt}}
+
+En criptografía, una \keyword{\emph{salt}} es un fragmento de bits aleatorios
+que se utiliza junto a claves, funciones hash y otros mecanismos de cifrado con
+el fin de prevenir ataques de diccionario o de \emph{rainbow table}.
+\emph{\parencite{Reference32}}
+
+\subsection{HMAC}
+
+\label{HMAC}
+
+Una \keyword{HMAC} (\keyword{Hash-based Message Authentication Code}) es una construcción
+usada para verificar la integridad de un mensaje, así como a su autor.
+
+Hace uso de una función hash criptográfica, como MD5 o SHA-1, junto a una clave
+criptográfica secreta. La robustez de una HMAC depende de la función hash
+elegida, del tamaño del resumen y del tamaño de la clave.
+\emph{\parencite{Reference31}}
+
 \subsection{Probabilistic Signature Scheme (PSS)}
+
+\label{PSS}
 
 \keyword{PSS} es un método de codificación\footnote{Un método de codificación es una operación que permite convertir un carácter de un determinado conjunto en un símbolo de otro sistema de representación.}
 desarrollado por Mihir Bellare y Phillip Rogaway, los cuales buscaban mejorar los métodos que existían.
-Para ello, incluyeron en su esquema el uso de una \emph{salt},\footnote{Bits aleatorios.} lo cual haría más seguro el algoritmo frente a intentos de romperlo. \emph{\parencite{Reference15}}
+Para ello, incluyeron en su esquema el uso de una \emph{salt}, lo cual haría más seguro el algoritmo frente a intentos de romperlo. \emph{\parencite{Reference15}}
 
 \begin{figure}[ht]
   \centering
