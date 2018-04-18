@@ -47,6 +47,34 @@ compila el \emph{Java bytecode} durante la instalación de una aplicación. Desd
   \label{fig:AndroidLogo}
 \end{figure}
 
+\subsection{KeyStore}
+
+\label{KeyStore}
+
+El \keyword{KeyStore} de Android es un sistema que permite almacenar claves
+criptográficas en un contenedor de manera que resulte más difícil extraerlas del
+dispositivo.
+
+Las claves que se encuentran en el \keyword{KeyStore} están protegidas contra la
+extracción mediante dos medidas de seguridad:
+
+\begin{itemize}
+  \item En primer lugar, las claves nunca ingresan al proceso de la aplicación.
+  Cuando una aplicación utiliza alguna de estas claves para llevar a cabo una
+  operación criptográfica, el texto sobre el que se va a realizar la operación
+  es llevado a un proceso ajeno a la aplicación que se encarga de realizar la
+  operación criptográfica. De esta manera, si el proceso de la aplicación se ve
+  comprometido por un atacante, este no será capaz de extraer las claves.
+
+  \item En segundo lugar, las claves se protegen mediante hardware seguro del
+  dispositivo Android. Este hardware evita que las claves puedan ser extraídas
+  incluso cuando el Sistema Operativo se ve comprometido: un atacante podría
+  utilizar las claves ligadas a una app para realizar operaciones
+  criptográficas, pero nunca podría extraerlas del dispositivo.
+\end{itemize}
+
+\emph{\parencite{Reference33}}
+
 %----------------------------------------------------------------------------------------
 
 \section{Bouncy Castle}
@@ -397,8 +425,9 @@ el fin de prevenir ataques de diccionario o de \emph{rainbow table}.
 
 \label{HMAC}
 
-Una \keyword{HMAC} (\keyword{Hash-based Message Authentication Code}) es una construcción
-usada para verificar la integridad de un mensaje, así como a su autor.
+Una \keyword{HMAC} (\keyword{Hash-based Message Authentication Code}) es una
+construcción usada para verificar la integridad de un mensaje, así como a su
+autor.
 
 Hace uso de una función hash criptográfica, como MD5 o SHA-1, junto a una clave
 criptográfica secreta. La robustez de una HMAC depende de la función hash
