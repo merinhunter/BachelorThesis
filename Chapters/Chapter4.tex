@@ -258,10 +258,10 @@ Para poder llevar a cabo el cifrado asimétrico se han desarrollado otras clases
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.4]{Figures/Signer}
+  \includegraphics[scale=0.5]{Figures/Signer_1}
   \decoRule
-  \caption[Signer]{Esquema general del funcionamiento del Signer}
-  \label{fig:Signer}
+  \caption[Signer (Versión 1)]{Esquema general del funcionamiento del Signer (Versión 1)}
+  \label{fig:Signer_1}
 \end{figure}
 
 \begin{itemize}
@@ -272,7 +272,7 @@ Para poder llevar a cabo el cifrado asimétrico se han desarrollado otras clases
   \item \keyword{Signer} -- La clase que se encarga de recibir Slices, EncFiles,
   KeyFiles y demás y devolverlos firmados. Asimismo, se encarga de comprobar
   las firmas de todos estos ficheros para preservar la autenticidad de la
-  información que portan. (Figura~\ref{fig:Signer})
+  información que portan. (Figura~\ref{fig:Signer_1})
 
   \item \keyword{RSAPSS} -- Esta clase incorpora todos los métodos necesarios
   para generar, a partir de un texto plano, un texto codificado y firmado
@@ -372,10 +372,18 @@ la clase HTTPClient, el destinatario puede bajarse los fragmentos del mensaje.
 %El cambio más notorio fue la desaparición de las clases RSALibrary y RSAPSS,
 %ambas sustituidas por KeyStoreManager.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.5]{Figures/Signer_2}
+  \decoRule
+  \caption[Signer (Versión final)]{Esquema general del funcionamiento del Signer (Versión final)}
+  \label{fig:Signer_2}
+\end{figure}
+
 El uso del KeyStore de Android obliga a utilizar las claves que se almacenan en
 él usando unos métodos específicos. Debido a ello, algunas clases ya creadas
 (Como RSALibrary o RSAPSS) se sustituyen por métodos específicos que se
-implementan en la clase KeyStoreHandler.
+implementan en la clase KeyStoreHandler. (Figura~\ref{fig:Signer_2})
 
 %Un cambio menor fue la generación de un ID de sesión aleatorio para las
 %cabeceras de algunas clases (Anteriormente se usaba un resumen hash del
