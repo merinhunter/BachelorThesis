@@ -104,7 +104,7 @@ poder dividir un fichero en varios fragmentos de un tamaño dado, y luego poder
 recomponerlo. Para ello se han implementado algunas clases para almacenar los
 datos de los fragmentos:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.4]{Figures/Slice_Header_1}
   \decoRule
@@ -130,7 +130,7 @@ datos de los fragmentos:
 También se han desarrollado otras clases con métodos para trocear y recomponer
 un fichero:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.5]{Figures/Assembler}
   \decoRule
@@ -160,7 +160,7 @@ En esta segunda versión, el objetivo del prototipo es proporcionar
 confidencialidad a las Slices. Para llevarlo a cabo se han implementado las
 siguientes clases:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.4]{Figures/EncFile_Header_1}
   \decoRule
@@ -185,7 +185,7 @@ siguientes clases:
 Además de estas clases, se han creado otras clases que aportan los métodos
 necesarios para cifrar las Slices:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.5]{Figures/Encryptor}
   \decoRule
@@ -193,7 +193,7 @@ necesarios para cifrar las Slices:
   \label{fig:Encryptor}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.5]{Figures/Decryptor}
   \decoRule
@@ -256,7 +256,7 @@ implementado algunas clases nuevas:
 
 Para poder llevar a cabo el cifrado asimétrico se han desarrollado otras clases:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.5]{Figures/Signer_1}
   \decoRule
@@ -293,7 +293,7 @@ Para poder llevar a cabo el cifrado asimétrico se han desarrollado otras clases
 En este prototipo se ha añadido una firma a varias de las clases que ya estaban
 implementadas:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.4]{Figures/Slice_Header_2}
   \decoRule
@@ -301,7 +301,7 @@ implementadas:
   \label{fig:Slice_Header_2}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.4]{Figures/EncFile_Header_2}
   \decoRule
@@ -372,7 +372,7 @@ la clase HTTPClient, el destinatario puede bajarse los fragmentos del mensaje.
 %El cambio más notorio fue la desaparición de las clases RSALibrary y RSAPSS,
 %ambas sustituidas por KeyStoreManager.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.5]{Figures/Signer_2}
   \decoRule
@@ -400,7 +400,7 @@ se encarga de la división y cifrado del fichero (Figura~\ref{fig:abstractA}). L
 otra se encarga de descargar del servidor los fragmentos cifrados y recomponer
 el fichero original (Figura~\ref{fig:abstractB}).
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.5]{Figures/abstractA}
   \decoRule
@@ -408,7 +408,7 @@ el fichero original (Figura~\ref{fig:abstractB}).
   \label{fig:abstractA}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.5]{Figures/abstractB}
   \decoRule
