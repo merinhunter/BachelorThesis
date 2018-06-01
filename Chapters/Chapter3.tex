@@ -4,16 +4,13 @@
 
 \label{Chapter3}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 
 \section{Java}
 
-\keyword{Java} es un lenguaje de programación de propósito general, orientado a objetos y concurrente.
-Originalmente fue desarrollado por James Gosling, Bill Joy y Guy Steele para Sun Microsystems en 1996 y fue adquirido por Oracle en 2010.
+Java es un lenguaje de programación de propósito general, orientado a objetos y concurrente. Originalmente fue desarrollado por James Gosling, Bill Joy y Guy Steele para Sun Microsystems en 1996 y fue adquirido por Oracle en 2010.
 
-Fue diseñado para que los desarrolladores escribiesen una única vez su programa y pudieran ejecutarlo en cualquier máquina sin necesitar recompilarlo.
-Esto es posible debido a que las aplicaciones Java son compiladas a \emph{bytecode} que luego es ejecutado en una \keyword{Java Virtual Machine (JVM)},
-sin importar la arquitectura de la máquina. \emph{\parencite{Reference13}}
+Fue diseñado para que los desarrolladores escribiesen una única vez su programa y pudieran ejecutarlo en cualquier máquina sin necesitar recompilarlo. Esto es posible debido a que las aplicaciones Java son compiladas a \emph{bytecode} que luego es ejecutado en una Java Virtual Machine (JVM), sin importar la arquitectura de la máquina. \emph{\parencite{Reference13}}
 
 \begin{figure}[ht]
   \centering
@@ -23,7 +20,7 @@ sin importar la arquitectura de la máquina. \emph{\parencite{Reference13}}
   \label{fig:JavaLogo}
 \end{figure}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 
 \section{Android}
 
@@ -170,7 +167,7 @@ se opta por otros modos de operación como CBC, el cual soluciona esto. \emph{\p
 Obviamente, para el primer bloque no se dispone de un bloque cifrado anterior,
 por lo que se recurre al uso de un \keyword{vector de inicialización (IV)}.
 \footnote{Un IV es un conjunto de bytes aleatorios que se usan para suplir la necesidad de un bloque cifrado anterior al primer bloque.
-Una muy mala práctica, por no decir prohibida, es la reutilización de un IV, ya que éste debe ser de uso único.}
+Una muy mala práctica, por no decir prohibida, es la reutilización de un IV, ya que este debe ser de uso único.}
 
 \begin{figure}[ht]
   \centering
@@ -416,7 +413,7 @@ Antes hablamos de la necesidad de preservar la \emph{integridad} y la \emph{aute
 Combina RSA con un método de codificación llamado Probabilistic Signature Scheme (PSS).
 \footnote{Las siglas SSA corresponden a Signature Scheme with Appendix, lo que quiere decir que la firma va añadida al final del mensaje o junto a él.}
 
-\subsection{\emph{salt}}
+\subsection{\emph{Salt}}
 
 En criptografía, una \keyword{\emph{salt}} es un fragmento de bits aleatorios
 que se utiliza junto a claves, funciones hash y otros mecanismos de cifrado con

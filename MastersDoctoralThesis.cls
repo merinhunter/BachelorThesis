@@ -510,7 +510,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 \hypersetup{pdfpagemode={UseOutlines},
 bookmarksopen=true,
 bookmarksopenlevel=0,
-hypertexnames=false,
+hypertexnames=true,
 colorlinks=false,% Set to false to disable coloring links
 citecolor=magenta,% The color of citations
 linkcolor=red,% The color of references to document elements (sections, figures, etc)

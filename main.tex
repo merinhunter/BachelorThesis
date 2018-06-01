@@ -23,10 +23,10 @@
 %-------------------------------------------------------------------------------
 
 \documentclass[
-11pt, % The default document font size, options: 10pt, 11pt, 12pt
+12pt, % The default document font size, options: 10pt, 11pt, 12pt
 %oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
 spanish, % ngerman for German
-singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+onehalfspacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
 %nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
 %liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
@@ -34,7 +34,7 @@ singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespac
 parskip, % Uncomment to add space between paragraphs
 %nohyperref, % Uncomment to not load the hyperref package
 headsepline, % Uncomment to get a line under the header
-%chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+chapterinoneline, % Uncomment to place the chapter title next to the number on one line
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
@@ -52,6 +52,11 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{listings} % Package to type bash commands
 
+\usepackage{imakeidx} % Package to make an index of words used in the papers
+\makeindex[program=makeindex,columns=2,intoc=true,options={-s index_style.ist}]
+
+\usepackage[hidelinks]{hyperref} % Used to hide the link frames
+
 %-------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %-------------------------------------------------------------------------------
@@ -59,10 +64,9 @@ headsepline, % Uncomment to get a line under the header
 \geometry{
 	paper=a4paper, % Change to letterpaper for US letter
 	inner=2.5cm, % Inner margin
-	outer=3.8cm, % Outer margin
-	bindingoffset=.5cm, % Binding offset
-	top=1.5cm, % Top margin
-	bottom=1.5cm, % Bottom margin
+	outer=2.5cm, % Outer margin
+	top=2.5cm, % Top margin
+	bottom=2.5cm, % Bottom margin
 	%showframe, % Uncomment to show how the type block is set on the page
 }
 
@@ -235,6 +239,12 @@ En este contexto, este Trabajo de Fin de Grado se enfoca en el desarrollo de una
 %\include{Appendices/AppendixA}
 %\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
+
+%-------------------------------------------------------------------------------
+%	THESIS CONTENT - CONCEPTS INDEX
+%-------------------------------------------------------------------------------
+
+\printindex
 
 %-------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
