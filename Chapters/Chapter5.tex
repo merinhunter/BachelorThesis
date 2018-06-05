@@ -8,8 +8,7 @@
 
 \section{Ejemplos de uso de la aplicación}
 
-%En esta sección se va a poner un ejemplo de como un usuario utilizaría la aplicación ya descargada en su terminal móvil.
-Esta sección muestra un ejemplo de uso completo de la aplicación, pasando por los prerrequisitos, el cifrado de un fichero y la descarga de un mensaje.
+De los prototipos mostrados en el Capítulo~\ref{Chapter4.2}, el cuarto prototipo es la aplicación final. Esta sección muestra un ejemplo de uso completo de la aplicación real que se ha desarrollado, pasando por los prerrequisitos, el cifrado de un fichero y la descarga de un mensaje, todo acompañado de capturas de pantalla de la ejecución real.
 
 \begin{figure}[!htb]
   \centering
@@ -33,7 +32,7 @@ Al abrir la aplicación por primera vez se genera un par de claves asimétricas,
   \centering
   \includegraphics[scale=0.4]{Figures/home}
   \decoRule
-  \caption[Shatter (Home)]{Pantalla principal de la aplicación}
+  \caption[Shatter (\emph{Home})]{Pantalla principal de la aplicación}
   \label{fig:home}
 \end{figure}
 
@@ -59,8 +58,6 @@ Para añadir a un contacto se dispone de un botón en la esquina inferior derech
   \label{fig:import}
 \end{figure}
 
-%De la misma manera, el nuevo contacto debe importar el certificado antes generado para poder llevar a cabo comunicaciones seguras.
-
 Una vez el nuevo usuario se ha importado, la pantalla principal se actualiza y muestra el alias que tiene asignado, junto a unos botones con los que se puede operar con su clave pública. (Figura~\ref{fig:home_2})
 
 \begin{figure}[!htb]
@@ -73,13 +70,13 @@ Una vez el nuevo usuario se ha importado, la pantalla principal se actualiza y m
 
 \subsection{Cifrado y envío}
 
-Para enviar un mensaje a un contacto, se debe utilizar el botón \keyword{\emph{Select File}}, el cual abre una nueva pantalla para elegir un fichero (Figura~\ref{fig:file_picker}). El selector de ficheros pone en el campo de texto de la pantalla principal el path absoluto del fichero seleccionado (también se puede escribir a mano), y ya solo queda tocar el botón \keyword{\emph{Encrypt}} del usuario al que vaya destinado el mensaje para que el fichero se fragmente y encripte. Si todo ha salido bien, se puede ver un mensaje en pantalla informando de ello, y en la ruta \path{Shatter/send/ID} se encuentran los fragmentos junto con la clave. (Figura~\ref{fig:encfiles})
+Para enviar un mensaje a un contacto, se debe utilizar el botón \emph{Select File}, el cual abre una nueva pantalla para elegir un fichero (Figura~\ref{fig:file_picker}). El selector de ficheros pone en el campo de texto de la pantalla principal el \emph{path} absoluto del fichero seleccionado (también se puede escribir a mano), y ya solo queda tocar el botón \emph{Encrypt} del usuario al que vaya destinado el mensaje para que el fichero se fragmente y encripte. Si todo ha salido bien, se puede ver un mensaje en pantalla informando de ello, y en la ruta \path{Shatter/send/ID} se encuentran los fragmentos junto con la clave. (Figura~\ref{fig:encfiles})
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[scale=0.4]{Figures/file_picker}
   \decoRule
-  \caption[Shatter (File Picker)]{Pantalla para seleccionar un fichero}
+  \caption[Shatter (\emph{File Picker})]{Pantalla para seleccionar un fichero}
   \label{fig:file_picker}
 \end{figure}
 
@@ -100,8 +97,7 @@ El ID generado se debe comunicar al contacto al que vaya destinado, pero antes s
 
 \subsection{Descarga y descifrado}
 
-Para descargar un mensaje de un contacto determinado, este debe comunicar de alguna manera el ID del mensaje, el cual se debe escribir en el campo de texto de la pantalla principal. A continuación se pulsa el botón \keyword{\emph{Decrypt}} asociado al alias del contacto.
-%Si nuestro contacto quisiera descargarse el mensaje, escribirá el ID que le comunicamos antes en el campo de texto de la pantalla principal. Como sabe que el mensaje viene de nuestra parte, tocará el botón \emph{Decrypt} de nuestra clave pública.
+Para descargar un mensaje de un contacto determinado, este debe comunicar de alguna manera el ID del mensaje, el cual se debe escribir en el campo de texto de la pantalla principal. A continuación se pulsa el botón \emph{Decrypt} asociado al alias del contacto.
 
 Con esto, la aplicación pide al servidor un índice con todos los ficheros asociados a ese ID y descarga todos los que pueda en el directorio \path{Shatter/ID}. En caso de que algún fichero falte, informa de ello al usuario antes de proceder con el descifrado y rellena un registro indicando cuales son los fragmentos que faltan. (Figura~\ref{fig:miss})
 
@@ -131,8 +127,10 @@ Si todos los fragmentos y la clave son descargados exitosamente, la aplicación 
 
 A lo largo de la etapa que supuso el desarrollo de la aplicación, se han encontrado varios problemas que dificultaron la finalización del proyecto.
 
-El mayor problema con el que se tuvo que lidiar es el no haber creado una parte portable que hiciera más fácil la migración a Android. Algunas librerías usadas cuando el proyecto solo era una aplicación escrita en Java tienen ciertas dependencias, las cuales no se encuentran en ninguna librería Java usada en Android. Además, el uso del Keystore de Android para almacenar las claves exige realizar el cifrado asimétrico, las firmas y la generación de las claves de una manera determinada, lo que supuso la eliminación de las clases que se encargaban anteriormente de ello (RSALibrary y RSAPSS). Aunque algunos de estos problemas no se habrían podido solucionar aun teniendo una parte portable, sin duda habría supuesto un ahorro considerable de tiempo.
+El mayor problema con el que se tuvo que lidiar es el no haber creado una parte portable que hiciera más fácil la migración a Android. Algunas librerías usadas cuando el proyecto solo era una aplicación escrita en Java tienen ciertas dependencias, las cuales no se encuentran en ninguna librería Java usada en Android. Además, el uso del \emph{Keystore} de Android para almacenar las claves exige realizar el cifrado asimétrico, las firmas y la generación de las claves de una manera determinada, lo que supuso la eliminación de las clases que se encargaban anteriormente de ello (\code{RSALibrary} y \code{RSAPSS}). Aunque algunos de estos problemas no se habrían podido solucionar aun teniendo una parte portable, sin duda habría supuesto un ahorro considerable de tiempo.
 
-A raíz de lo anterior, la mayoría de las clases no estuvieron bien definidas desde un principio. Esto supuso muchos cambios a lo largo del desarrollo de la aplicación (Cabeceras, modos de cifrado, registros...). De nuevo, una buena planificación habría ahorrado una gran cantidad de tiempo y energía.
+A raíz de lo anterior, la mayoría de las clases no partieron de un buen diseño. Esto supuso muchos cambios a lo largo del desarrollo de la aplicación (Cabeceras, modos de cifrado, registros...). Un mejor diseño original del programa habría ahorrado una gran cantidad de tiempo y energía.
 
-Pero no todos los problemas encontrados tienen que ver con la desorganización. La aplicación ahora cuenta con un servidor dedicado pero, en un principio, se pensó en utilizar un servicio externo para el almacenamiento de los mensajes enviados por los usuarios. De algunas ideas que salieron, se eligió la aplicación Pastebin\footnote{\url{https://pastebin.com/}}, ya que permite la subida anónima de texto plano. La idea era que la aplicación subiera los distintos fragmentos cifrados a la plataforma, permitiendo al resto de usuarios su descarga. Sin embargo, la existencia de límites en el número de mensajes enviados o en la longitud de los mismos hicieron que se desechara la idea en favor de un servidor dedicado.
+Pero no todos los problemas encontrados tienen que ver con el diseño. La aplicación ahora cuenta con un servidor dedicado pero, en un principio, se pensó en utilizar un servicio externo para el almacenamiento de los mensajes enviados por los usuarios. De algunas ideas que salieron, se eligió la aplicación Pastebin\footnote{\url{https://pastebin.com/}}, ya que permite la subida anónima de texto plano. La idea era que la aplicación subiera los distintos fragmentos cifrados a la plataforma, permitiendo al resto de usuarios su descarga. Sin embargo, la existencia de límites en el número de mensajes enviados o en la longitud de los mismos hicieron que se desechara la idea en favor de un servidor dedicado.
+
+Debido a la inexperiencia en el campo que abarca este proyecto, es normal encontrarse con problemas de este tipo durante su desarrollo. Sin embargo, es importante señalar el valor didáctico de estos fallos, los cuales evitarán que se vuelvan a repetir en futuros proyectos.
