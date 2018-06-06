@@ -8,7 +8,7 @@
 
 \section{Objetivo general}
 
-El objetivo principal es el desarrollo de una aplicación para el sistema operativo Android, que permita a cualquier usuario realizar una comunicación de datos de manera que se preserve la confidencialidad, la integridad y la autenticación de la información transmitida.
+El objetivo principal es el desarrollo de una aplicación para el sistema operativo Android\index{Android}, que permita a cualquier usuario realizar una comunicación de datos de manera que se preserve la confidencialidad\index{Confidencialidad}, la integridad\index{Integridad} y la autenticación\index{Autenticación} de la información transmitida.
 
 %-------------------------------------------------------------------------------
 
@@ -19,33 +19,33 @@ Para abordar el objetivo principal del proyecto, este se ha dividido en unos obj
 \begin{itemize}
   \item Proporcionar un mecanismo que permita la transmisión de información entre distintos dispositivos.
   \item Desarrollar un esquema que permita cifrar y descifrar la información que se quiere transmitir.
-  \item Diseñar una forma de comprobar la integridad y la autenticación de la información.
+  \item Diseñar una forma de comprobar la integridad\index{Integridad} y la autenticación\index{Autenticación} de la información.
 \end{itemize}
 
 %-------------------------------------------------------------------------------
 
 \section{Modelo de amenaza}
 
-En criptografía, un modelo de amenaza (\emph{threat model}) especifica que tipo de amenazas potenciales a un sistema puede realizar un individuo (o grupo) con unos determinados recursos. Con el objetivo de proteger el sistema de estas amenazas, y únicamente estas, se diseña un determinado esquema de seguridad para poder contrarrestarlas.
+En criptografía\index{Criptografía}, un modelo de amenaza (\emph{threat model}) especifica que tipo de amenazas potenciales a un sistema puede realizar un individuo (o grupo) con unos determinados recursos. Con el objetivo de proteger el sistema de estas amenazas, y únicamente estas, se diseña un determinado esquema de seguridad\index{Seguridad} para poder contrarrestarlas.
 
-Nuestro modelo de amenaza será un atacante con conocimientos de criptoanálisis y con una capacidad de cómputo limitada, como la que puede tener un usuario normal en casa o en una oficina.
+Nuestro modelo de amenaza será un atacante con conocimientos de criptoanálisis\index{Criptoanálisis} y con una capacidad de cómputo limitada, como la que puede tener un usuario normal en casa o en una oficina.
 
-Los puntos más vulnerables de nuestro modelo son el \emph{hardware} y el \emph{software} sobre el que ejecuta el sistema, por lo que dejamos fuera a aquellas compañías que han trabajado en su desarrollo, como Intel, Google, Qualcomm, etc.
+Los puntos más vulnerables de nuestro modelo son el \emph{hardware}\index{Hardware} y el \emph{software}\index{Software} sobre el que ejecuta el sistema, por lo que dejamos fuera a aquellas compañías que han trabajado en su desarrollo, como Intel, Google, Qualcomm, etc.
 
 Debido a los recursos casi ilimitados que poseen también dejamos fuera de nuestro modelo a cualquiera de los gobiernos de las grandes potencias del mundo, como China, Corea, Rusia o Estados Unidos.
 
 Un atacante de nuestro modelo de amenaza podría realizar los siguientes tipos de ataque:
 
 \begin{itemize}
-  \item Ataques sobre el texto cifrado -- En este tipo de ataques el atacante dispone únicamente del texto cifrado y no tiene acceso al texto plano. Ejemplos de este modelo son los ataques por fuerza bruta, en los que se prueba cada una de las posibles combinaciones para una clave hasta dar con la correcta.
+  \item Ataques sobre el texto cifrado\index{Cifrado} -- En este tipo de ataques el atacante dispone únicamente del texto cifrado\index{Cifrado} y no tiene acceso al texto plano. Ejemplos de este modelo son los ataques por fuerza bruta, en los que se prueba cada una de las posibles combinaciones para una clave hasta dar con la correcta.
 
-  \item Ataque de texto plano conocido -- En este tipo de ataques se presupone que el atacante tiene acceso a un número limitado de textos planos y sus correspondientes textos cifrados. El objetivo de este tipo de ataques es el de obtener la clave de cifrado a partir de estos pares, con el fin de poder descifrar futuras comunicaciones.
+  \item Ataque de texto plano conocido -- En este tipo de ataques se presupone que el atacante tiene acceso a un número limitado de textos planos y sus correspondientes textos cifrados. El objetivo de este tipo de ataques es el de obtener la clave de cifrado\index{Cifrado} a partir de estos pares, con el fin de poder descifrar futuras comunicaciones.
 
   \item Ataque de texto plano selectivo -- En este tipo de ataques el atacante puede seleccionar un número indeterminado de textos planos y obtener sus equivalentes cifrados. Con esto, un atacante puede probar distintas combinaciones y encontrar patrones sobre el texto plano para explotar alguna vulnerabilidad.
 
-  \item Ataque de texto cifrado selectivo -- Parecido al anterior, el atacante puede obtener un número indeterminado de textos planos a partir de sus equivalentes cifrados.
+  \item Ataque de texto cifrado\index{Cifrado} selectivo -- Parecido al anterior, el atacante puede obtener un número indeterminado de textos planos a partir de sus equivalentes cifrados.
 
-  \item Ataques sobre la clave -- En este tipo de ataques el atacante dispone de alguna información acerca de la clave de cifrado.
+  \item Ataques sobre la clave -- En este tipo de ataques el atacante dispone de alguna información acerca de la clave de cifrado\index{Cifrado}.
 
   \item Ataque de intermediario (\emph{Man in the middle}) -- En este tipo de ataque el atacante retransmite o modifica la información que un usuario envía a otro, haciendo creer a ambas partes que mantienen una comunicación directa.
 

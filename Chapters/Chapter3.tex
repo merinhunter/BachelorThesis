@@ -6,31 +6,31 @@
 
 %-------------------------------------------------------------------------------
 
-\section{Java}
+\section{Java\index{Java}}
 
-Java es un lenguaje de programación de propósito general, orientado a objetos y concurrente. Originalmente fue desarrollado por James Gosling, Bill Joy y Guy Steele para Sun Microsystems en 1996 y fue adquirido por Oracle en 2010.
+Java\index{Java} es un lenguaje de programación de propósito general, orientado a objetos y concurrente. Originalmente fue desarrollado por James Gosling, Bill Joy y Guy Steele para Sun Microsystems en 1996 y fue adquirido por Oracle en 2010.
 
-Fue diseñado para que los desarrolladores escribiesen una única vez su programa y pudieran ejecutarlo en cualquier máquina sin necesitar recompilarlo. Esto es posible debido a que las aplicaciones Java son compiladas a \emph{bytecode} que luego es ejecutado en una \emph{Java Virtual Machine} (JVM), sin importar la arquitectura de la máquina. \emph{\parencite{Reference13}}
+Fue diseñado para que los desarrolladores escribiesen una única vez su programa y pudieran ejecutarlo en cualquier máquina sin necesitar recompilarlo. Esto es posible debido a que las aplicaciones Java\index{Java} son compiladas a \emph{bytecode} que luego es ejecutado en una \emph{Java Virtual Machine} (JVM), sin importar la arquitectura de la máquina. \emph{\parencite{Reference13}}
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.3]{Figures/JavaLogo}
   \decoRule
-  \caption[Java (Logo)]{Logo de Java \emph{\parencite{Reference6}}}
+  \caption[Java (Logo)]{Logo de Java\index{Java} \emph{\parencite{Reference6}}}
   \label{fig:JavaLogo}
 \end{figure}
 
 %-------------------------------------------------------------------------------
 
-\section{Android}
+\section{Android\index{Android}}
 
 \label{Android}
 
-Android es un sistema operativo desarrollado por Google, basado en el \emph{kernel} de Linux. Está diseñado principalmente para dispositivos táctiles, como \emph{smartphones} y \emph{tablets}.
+Android\index{Android} es un sistema operativo desarrollado por Google, basado en el \emph{kernel} de Linux\index{Linux}. Está diseñado principalmente para dispositivos táctiles, como \emph{smartphones} y \emph{tablets}.
 
-Las aplicaciones de Android están escritas en Java. Hasta la versión 4.4 de Android, se utilizaba Dalvik como máquina virtual con la compilación en tiempo de ejecución (JIT) para ejecutar \emph{Dalvik bytecode}, que es una traducción del \emph{Java bytecode}.
+Las aplicaciones de Android\index{Android} están escritas en Java\index{Java}. Hasta la versión 4.4 de Android\index{Android}, se utilizaba Dalvik como máquina virtual con la compilación en tiempo de ejecución (JIT) para ejecutar \emph{Dalvik bytecode}, que es una traducción del \emph{Java bytecode}.
 
-Android 4.4 introdujo el ART (\emph{Android Runtime}) como un nuevo entorno de ejecución, que compila el \emph{Java bytecode} durante la instalación de una aplicación. Desde Android 5.0 se convirtió en la única opción en tiempo de ejecución. \emph{\parencite{Reference7}}
+Android\index{Android} 4.4 introdujo el ART (\emph{Android Runtime}) como un nuevo entorno de ejecución, que compila el \emph{Java bytecode} durante la instalación de una aplicación. Desde Android\index{Android} 5.0 se convirtió en la única opción en tiempo de ejecución. \emph{\parencite{Reference7}}
 
 \begin{figure}[ht]
   \centering
@@ -40,18 +40,18 @@ Android 4.4 introdujo el ART (\emph{Android Runtime}) como un nuevo entorno de e
   \label{fig:AndroidLogo}
 \end{figure}
 
-\subsection{\emph{Keystore}}
+\subsection{\emph{Keystore}\index{Keystore}}
 
 \label{Keystore}
 
-El \emph{Keystore} de Android es un sistema que permite almacenar claves criptográficas en un contenedor de manera que resulte más difícil extraerlas del dispositivo.
+El \emph{Keystore}\index{Keystore} de Android\index{Android} es un sistema que permite almacenar claves criptográficas en un contenedor de manera que resulte más difícil extraerlas del dispositivo.
 
-Las claves que se encuentran en el \emph{Keystore} están protegidas contra la extracción mediante dos medidas de seguridad:
+Las claves que se encuentran en el \emph{Keystore}\index{Keystore} están protegidas contra la extracción mediante dos medidas de seguridad\index{Seguridad}:
 
 \begin{itemize}
   \item En primer lugar, las claves nunca ingresan al proceso de la aplicación. Cuando una aplicación utiliza alguna de estas claves para llevar a cabo una operación criptográfica, el texto sobre el que se va a realizar la operación es llevado a un proceso ajeno a la aplicación que se encarga de realizar la operación criptográfica. De esta manera, si el proceso de la aplicación se ve comprometido por un atacante, este no será capaz de extraer las claves.
 
-  \item En segundo lugar, las claves se protegen mediante \emph{hardware} seguro del dispositivo Android. Este \emph{hardware} evita que las claves puedan ser extraídas incluso cuando el sistema operativo se ve comprometido: un atacante podría utilizar las claves ligadas a una \emph{app} para realizar operaciones criptográficas, pero nunca podría extraerlas del dispositivo.
+  \item En segundo lugar, las claves se protegen mediante \emph{hardware}\index{Hardware} seguro del dispositivo Android\index{Android}. Este \emph{hardware}\index{Hardware} evita que las claves puedan ser extraídas incluso cuando el sistema operativo se ve comprometido: un atacante podría utilizar las claves ligadas a una \emph{app} para realizar operaciones criptográficas, pero nunca podría extraerlas del dispositivo.
 \end{itemize}
 
 \emph{\parencite{Reference33}}
@@ -60,19 +60,19 @@ Las claves que se encuentran en el \emph{Keystore} están protegidas contra la e
 
 \section{Bouncy Castle}
 
-Bouncy Castle (BC) es una API utilizada en criptografía. Esta API, entre otras cosas, proporciona los siguientes servicios:
+Bouncy Castle (BC) es una API utilizada en criptografía\index{Criptografía}. Esta API, entre otras cosas, proporciona los siguientes servicios:
 \begin{itemize}
-  \item Una API criptográfica ligera para Java y C\#.
-  \item Un proveedor para \emph{Java Cryptography Extension} (JCE)\footnote{JCE implementa encriptación, generación y protocolos de establecimiento de claves y algoritmos MAC.} y para \emph{Java Cryptography Architecture} (JCA).
+  \item Una API criptográfica ligera para Java\index{Java} y C\#.
+  \item Un proveedor para \emph{Java Cryptography Extension} (JCE)\footnote{JCE implementa encriptación, generación y protocolos de establecimiento de claves y algoritmos MAC\index{MAC}.} y para \emph{Java Cryptography Architecture} (JCA).
 \end{itemize}
 
 BC está mantenidos por una organización caritativa australiana, conocida como \emph{The Legion of the Bouncy Castle}. \emph{\parencite{Reference4}}
 
 %-------------------------------------------------------------------------------
 
-\section{Criptografía de clave simétrica}
+\section{Criptografía\index{Criptografía} de clave simétrica\index{Clave simétrica}}
 
-La confidencialidad en las comunicaciones es el objetivo principal que se persigue con los algoritmos de encriptación. La criptografía de clave simétrica nos permite comunicarnos con otra persona (o máquina) de manera que un tercero, aun teniendo el mensaje cifrado, no pudiera extraer nada de información de él.
+La confidencialidad\index{Confidencialidad} en las comunicaciones es el objetivo principal que se persigue con los algoritmos de encriptación. La criptografía\index{Criptografía} de clave simétrica\index{Clave simétrica} nos permite comunicarnos con otra persona (o máquina) de manera que un tercero, aun teniendo el mensaje cifrado\index{Cifrado}, no pudiera extraer nada de información de él.
 
 Los algoritmos basados en este modelo utilizan un secreto compartido entre los dos extremos que se quieren comunicar. Una vez acordado, nadie que no posea este secreto podría descifrar ningún mensaje enviado por uno u otro extremo. (Figura~\ref{fig:SymmetricKeyEncryption})
 
@@ -80,21 +80,21 @@ Los algoritmos basados en este modelo utilizan un secreto compartido entre los d
   \centering
   \includegraphics[scale=0.4]{Figures/SymmetricKeyEncryption}
   \decoRule
-  \caption[Criptografía de clave simétrica (Esquema)]{Esquema general de la criptografía de clave simétrica}
+  \caption[Criptografía de clave simétrica (Esquema)]{Esquema general de la criptografía\index{Criptografía} de clave simétrica\index{Clave simétrica}}
   \label{fig:SymmetricKeyEncryption}
 \end{figure}
 
 El problema que tiene este modelo es el intercambio de las claves. Es necesario un canal seguro por el que comunicar las claves y este tipo de algoritmos no proveen ese servicio. \emph{\parencite{Reference19}}
 
-Es por ello que normalmente se mezcla este tipo de criptografía con otro conocido como criptografía de clave pública, que veremos más adelante.
+Es por ello que normalmente se mezcla este tipo de criptografía\index{Criptografía} con otro conocido como criptografía\index{Criptografía} de clave pública\index{Clave pública}, que veremos más adelante.
 
 %-------------------------------------------------------------------------------
 
-\section{Cifrado por bloques}
+\section{Cifrado\index{Cifrado} por bloques}
 
-Dentro de la criptografía simétrica nos encontramos dos grandes algoritmos: los de flujo y los de bloques. Nos centraremos en el segundo.
+Dentro de la criptografía\index{Criptografía} simétrica\index{Clave simétrica} nos encontramos dos grandes algoritmos: los de flujo y los de bloques. Nos centraremos en el segundo.
 
-Un algoritmo basado en cifrado por bloques es aquel que, como su propio nombre indica, realiza un cifrado primero dividiendo el texto plano en bloques de un tamaño determinado\footnote{Cuando el tamaño del fichero que queremos encriptar no es múltiplo del tamaño de bloque, el bloque final tendrá un tamaño diferente al resto. Esto se soluciona con técnicas de \emph{padding}, lo cual se explica en el siguiente punto.} y luego cifrando por separado estos bloques, dando como resultado un texto cifrado.
+Un algoritmo basado en cifrado\index{Cifrado} por bloques es aquel que, como su propio nombre indica, realiza un cifrado\index{Cifrado} primero dividiendo el texto plano en bloques de un tamaño determinado\footnote{Cuando el tamaño del fichero que queremos encriptar no es múltiplo del tamaño de bloque, el bloque final tendrá un tamaño diferente al resto. Esto se soluciona con técnicas de \emph{padding}\index{Padding}, lo cual se explica en el siguiente punto.} y luego cifrando por separado estos bloques, dando como resultado un texto cifrado\index{Cifrado}.
 
 La mayoría de los cifradores por bloques son iterativos, es decir, realizan la misma operación un determinado número de veces o rondas (\emph{rounds}). Esta operación suele ser idéntica en todas las rondas, a excepción de la primera o la última, donde suele ser distinta.
 
@@ -106,65 +106,65 @@ La mayoría de los cifradores por bloques son iterativos, es decir, realizan la 
   \label{fig:ECB}
 \end{figure}
 
-Existen varios modos de operación para llevar a cabo un cifrado por bloques: ECB, CBC, OFB, CFB, etc. Cada uno de ellos opera los bloque de diferente forma: algunos utilizan el bloque cifrado anterior para generar el nuevo, otros utilizan combinaciones con estructuras del mismo tamaño que el bloque, etc. \emph{\parencite{Reference21}}
+Existen varios modos de operación para llevar a cabo un cifrado\index{Cifrado} por bloques: ECB, CBC, OFB, CFB, etc. Cada uno de ellos opera los bloque de diferente forma: algunos utilizan el bloque cifrado\index{Cifrado} anterior para generar el nuevo, otros utilizan combinaciones con estructuras del mismo tamaño que el bloque, etc. \emph{\parencite{Reference21}}
 
 %-------------------------------------------------------------------------------
 
-\section{Relleno (\emph{Padding})}
+\section{Relleno (\emph{Padding}\index{Padding})}
 
-Relleno (\emph{Padding}) es el nombre que recibe la técnica que permite en criptografía por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
+Relleno (\emph{Padding}\index{Padding}) es el nombre que recibe la técnica que permite en criptografía\index{Criptografía} por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
 
-Es muy común que, en la criptografía por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema. Para solucionar esto existen multitud de técnicas de \emph{padding}, desde agregar al final del bloque un \emph{byte} con un cierto valor, hasta simplemente rellenar con ceros.
+Es muy común que, en la criptografía\index{Criptografía} por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema. Para solucionar esto existen multitud de técnicas de \emph{padding}\index{Padding}, desde agregar al final del bloque un \emph{byte} con un cierto valor, hasta simplemente rellenar con ceros.
 
-El requisito indispensable que debe cumplir cualquier técnica de \emph{padding} es que debe permitir al destinatario diferenciar los \emph{bytes} del mensaje original de los \emph{bytes} de relleno. \emph{\parencite{Reference8}}
+El requisito indispensable que debe cumplir cualquier técnica de \emph{padding}\index{Padding} es que debe permitir al destinatario diferenciar los \emph{bytes} del mensaje original de los \emph{bytes} de relleno. \emph{\parencite{Reference8}}
 
 %-------------------------------------------------------------------------------
 
 \section{CBC}
 
-\emph{Cipher Block Chaining} (CBC) es uno de los modos de operación para cifrado por bloques que hemos mencionado antes, y el que se ha decidido elegir para este proyecto.
+\emph{Cipher Block Chaining} (CBC) es uno de los modos de operación para cifrado\index{Cifrado} por bloques que hemos mencionado antes, y el que se ha decidido elegir para este proyecto.
 
 En algunos modos como ECB, dada una clave determinada, cualquier \emph{plaintext} siempre dará como resultado el mismo \emph{ciphertext}. Si, como es nuestro caso, esta característica supone un problema, se opta por otros modos de operación como CBC, el cual soluciona esto. \emph{\parencite{Reference23}}
 
 \subsection{Modo de operación}
 
-CBC funciona combinando cada bloque de \emph{plaintext} con el bloque de \emph{ciphertext} justamente anterior. Obviamente, para el primer bloque no se dispone de un bloque cifrado anterior, por lo que se recurre al uso de un vector de inicialización (IV).\footnote{Un IV es un conjunto de \emph{bytes} aleatorios que se usan para suplir la necesidad de un bloque cifrado anterior al primer bloque. Una muy mala práctica, por no decir prohibida, es la reutilización de un IV, ya que este debe ser de uso único.}
+CBC funciona combinando cada bloque de \emph{plaintext} con el bloque de \emph{ciphertext} justamente anterior. Obviamente, para el primer bloque no se dispone de un bloque cifrado\index{Cifrado} anterior, por lo que se recurre al uso de un vector de inicialización (IV\index{IV}).\footnote{Un IV\index{IV} es un conjunto de \emph{bytes} aleatorios que se usan para suplir la necesidad de un bloque cifrado\index{Cifrado} anterior al primer bloque. Una muy mala práctica, por no decir prohibida, es la reutilización de un IV\index{IV}, ya que este debe ser de uso único.}
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.5]{Figures/CBC_enc}
   \decoRule
-  \caption[\emph{Cipher Block Chaining} (CBC) - Cifrado]{Cifrado usando el modo \emph{Cipher Block Chaining} (CBC)}
+  \caption[\emph{Cipher Block Chaining} (CBC) - Cifrado]{Cifrado\index{Cifrado} usando el modo \emph{Cipher Block Chaining} (CBC)}
   \label{fig:CBC_enc}
 \end{figure}
 
-Como vemos en la Figura~\ref{fig:CBC_enc}, en el cifrado con CBC, el primer bloque de texto y el IV son sometidos a una operación XOR. El resultado de esta operación se pasa por una función de cifrado\footnote{La función de cifrado es la misma para todos los bloques.}, la cual nos dará el primer bloque cifrado. Este primer bloque es entonces pasado por un XOR junto con el segundo bloque de texto, y así sucesivamente.
+Como vemos en la Figura~\ref{fig:CBC_enc}, en el cifrado\index{Cifrado} con CBC, el primer bloque de texto y el IV\index{IV} son sometidos a una operación XOR. El resultado de esta operación se pasa por una función de cifrado\index{Cifrado}\footnote{La función de cifrado\index{Cifrado} es la misma para todos los bloques.}, la cual nos dará el primer bloque cifrado\index{Cifrado}. Este primer bloque es entonces pasado por un XOR junto con el segundo bloque de texto, y así sucesivamente.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.5]{Figures/CBC_dec}
   \decoRule
-  \caption[\emph{Cipher Block Chaining} (CBC) - Descifrado]{Descifrado usando \emph{Cipher Block Chaining} (CBC)}
+  \caption[\emph{Cipher Block Chaining} (CBC) - Descifrado]{Descifrado\index{Descifrado} usando \emph{Cipher Block Chaining} (CBC)}
   \label{fig:CBC_dec}
 \end{figure}
 
 A la hora de desencriptar, la misma función utilizada en la encriptación es usada para obtener cada bloque de texto a partir de los bloques cifrados. Una representación de este proceso lo encontramos en la Figura~\ref{fig:CBC_dec}.
 
-El objetivo de un cifrado por bloques es poder paralelizar el proceso de encriptación. Lamentablemente, el cifrado con CBC debe ser secuencial, ya que para obtener cada bloque es necesario haber generado antes el anterior.
+El objetivo de un cifrado\index{Cifrado} por bloques es poder paralelizar el proceso de encriptación. Lamentablemente, el cifrado\index{Cifrado} con CBC debe ser secuencial, ya que para obtener cada bloque es necesario haber generado antes el anterior.
 
-Sin embargo, el proceso de desencriptación con CBC sí que puede ser paralelizado, ya que las mútiples funciones de descifrado que se realizan no dependen de ningún bloque anterior. \emph{\parencite{Reference24}}
+Sin embargo, el proceso de desencriptación con CBC sí que puede ser paralelizado, ya que las mútiples funciones de descifrado\index{Descifrado} que se realizan no dependen de ningún bloque anterior. \emph{\parencite{Reference24}}
 
 %-------------------------------------------------------------------------------
 
-\section{AES}
+\section{AES\index{AES}}
 
 \label{AES}
 
-\emph{Advanced Encryption Standard} (AES), también conocido como Rijndael por sus creadores, es el resultado del proceso de búsqueda de un estándar para encriptación por parte del gobierno de los Estados Unidos.
+\emph{Advanced Encryption Standard} (AES\index{AES}), también conocido como Rijndael por sus creadores, es el resultado del proceso de búsqueda de un estándar\index{Estándar} para encriptación por parte del gobierno de los Estados Unidos.
 
-AES es una variante de Rijndael (que a su vez es una variante de Square), del cual solo toma algunos modos. Mientras que el algoritmo original puede tomar tamaños de bloque múltiplos de 32 \emph{bits},\footnote{Con un mínimo de 128 \emph{bits} y un máximo de 256.} AES únicamente opera con tamaños de bloque igual a 128 \emph{bits}.
+AES\index{AES} es una variante de Rijndael (que a su vez es una variante de Square), del cual solo toma algunos modos. Mientras que el algoritmo original puede tomar tamaños de bloque múltiplos de 32 \emph{bits},\footnote{Con un mínimo de 128 \emph{bits} y un máximo de 256.} AES\index{AES} únicamente opera con tamaños de bloque igual a 128 \emph{bits}.
 
-Con el tamaño de las claves ocurre algo parecido, ya que AES solo soporta tamaños de 128, 192 y 256 \emph{bits}, mientras que el algoritmo original soporta unos cuantos más. \emph{\parencite{Reference25}}
+Con el tamaño de las claves ocurre algo parecido, ya que AES\index{AES} solo soporta tamaños de 128, 192 y 256 \emph{bits}, mientras que el algoritmo original soporta unos cuantos más. \emph{\parencite{Reference25}}
 
 \subsection{Estado (\emph{State})}
 
@@ -190,7 +190,7 @@ El algoritmo consta de ciertas fases, una de ellas consiste en someter el \emph{
   \centering
   \includegraphics[scale=0.25]{Figures/SubBytes}
   \decoRule
-  \caption[\emph{SubBytes} (AES)]{Operación \emph{SubBytes} para AES \emph{\parencite{Reference27}}}
+  \caption[\emph{SubBytes} (AES)]{Operación \emph{SubBytes} para AES\index{AES} \emph{\parencite{Reference27}}}
   \label{fig:SubBytes}
 \end{figure}
 
@@ -198,7 +198,7 @@ El algoritmo consta de ciertas fases, una de ellas consiste en someter el \emph{
   \centering
   \includegraphics[scale=0.4]{Figures/ShiftRows}
   \decoRule
-  \caption[\emph{ShiftRows} (AES)]{Operación \emph{ShiftRows} para AES \emph{\parencite{Reference28}}}
+  \caption[\emph{ShiftRows} (AES)]{Operación \emph{ShiftRows} para AES\index{AES} \emph{\parencite{Reference28}}}
   \label{fig:ShiftRows}
 \end{figure}
 
@@ -206,7 +206,7 @@ El algoritmo consta de ciertas fases, una de ellas consiste en someter el \emph{
   \centering
   \includegraphics[scale=0.25]{Figures/MixColumns}
   \decoRule
-  \caption[\emph{MixColumns} (AES)]{Operación \emph{MixColumns} para AES \emph{\parencite{Reference29}}}
+  \caption[\emph{MixColumns} (AES)]{Operación \emph{MixColumns} para AES\index{AES} \emph{\parencite{Reference29}}}
   \label{fig:MixColumns}
 \end{figure}
 
@@ -214,7 +214,7 @@ El algoritmo consta de ciertas fases, una de ellas consiste en someter el \emph{
   \centering
   \includegraphics[scale=0.4]{Figures/AddRoundKey}
   \decoRule
-  \caption[\emph{AddRoundKey} (AES)]{Operación \emph{AddRoundKey} para AES \emph{\parencite{Reference30}}}
+  \caption[\emph{AddRoundKey} (AES)]{Operación \emph{AddRoundKey} para AES\index{AES} \emph{\parencite{Reference30}}}
   \label{fig:AddRoundKey}
 \end{figure}
 
@@ -222,14 +222,14 @@ El algoritmo consta de ciertas fases, una de ellas consiste en someter el \emph{
 
 \subsection{Algoritmo}
 
-En AES el tamaño del bloque de entrada, del de salida y del \emph{State} es de 128 \emph{bits}, y el tamaño de la clave puede tomar los valores de 128, 192 ó 256 \emph{bits}.
+En AES\index{AES} el tamaño del bloque de entrada, del de salida y del \emph{State} es de 128 \emph{bits}, y el tamaño de la clave puede tomar los valores de 128, 192 ó 256 \emph{bits}.
 
 Para cada bloque de entrada, la primera etapa del algoritmo consiste en generar las \emph{Round Keys} a partir de la clave, usando el esquema de claves Rijndael.\footnote{Este esquema expande una clave en un número determinado de claves separadas.}
 
 Una vez conseguidas las \emph{Round Keys}, se pasa por una ronda inicial especial en la cual solo se realiza la transformación \emph{AddRoundKey}.
 
 \begin{table}[ht]
-  \caption{Combinaciones para el número de rondas en AES.}
+  \caption{Combinaciones para el número de rondas en AES\index{AES}.}
   \label{tab:rounds}
   \centering
   \begin{tabular}{l l l}
@@ -254,43 +254,43 @@ El resultado de todo esto será el \emph{output} de nuestro bloque de entrada. \
 
 %-------------------------------------------------------------------------------
 
-\section{Criptografía de clave pública}
+\section{Criptografía\index{Criptografía} de clave pública\index{Clave pública}}
 
-Uno de los problemas que tiene la criptografía de clave simétrica es que usamos la misma clave para el cifrado y el descifrado, por lo que se hace necesaria su ocultación. En la criptografía de clave pública, al hacer uso de dos claves, no es necesario mantener en secreto ambas. Aquella que ocultamos es llamada clave privada y la otra, pública.
+Uno de los problemas que tiene la criptografía\index{Criptografía} de clave simétrica\index{Clave simétrica} es que usamos la misma clave para el cifrado\index{Cifrado} y el descifrado\index{Descifrado}, por lo que se hace necesaria su ocultación. En la criptografía\index{Criptografía} de clave pública\index{Clave pública}, al hacer uso de dos claves, no es necesario mantener en secreto ambas. Aquella que ocultamos es llamada clave privada\index{Clave privada} y la otra, pública\index{Clave pública}.
 
-La esencia de este algoritmo radica en que un mensaje cifrado con una clave pública solo puede ser descifrado con su homóloga privada, y viceversa. De esta manera podemos, tal como su propio nombre indica, difundir públicamente nuestra clave pública mientras mantenemos oculta la privada.
+La esencia de este algoritmo radica en que un mensaje cifrado\index{Cifrado} con una clave pública\index{Clave pública} solo puede ser descifrado\index{Descifrado} con su homóloga privada\index{Clave privada}, y viceversa. De esta manera podemos, tal como su propio nombre indica, difundir públicamente nuestra clave pública\index{Clave pública} mientras mantenemos oculta la privada\index{Clave privada}.
 
-Si lo que queremos es confidencialidad durante la comunicación, entonces encriptaremos el contenido del mensaje con la clave pública del destinatario, de forma que solo él podrá descifrarlo (Figura~\ref{fig:PublicKeyEncryption}).
+Si lo que queremos es confidencialidad\index{Confidencialidad} durante la comunicación, entonces encriptaremos el contenido del mensaje con la clave pública\index{Clave pública} del destinatario, de forma que solo él podrá descifrarlo (Figura~\ref{fig:PublicKeyEncryption}).
 
-Por otra parte, también nos interesa que cuando alguien reciba nuestro mensaje pueda estar seguro de que realmente es nuestro. Para lograr esto, lo que hacemos es cifrar un resumen del mensaje (\emph{hash}) con nuestra clave privada. De esta forma, cuando alguien lo descifre con nuestra clave pública y compruebe el resumen, podrá estar seguro de que proviene de nosotros.\footnote{Es, en esencia, el fundamento sobre el que se basa la firma digital.} Así conseguimos preservar la integridad y la autenticación del mensaje, dos parámetros muy importantes a tener en cuenta en seguridad. \emph{\parencite{Reference14}}
+Por otra parte, también nos interesa que cuando alguien reciba nuestro mensaje pueda estar seguro de que realmente es nuestro. Para lograr esto, lo que hacemos es cifrar un resumen del mensaje (\emph{hash}\index{Hash}) con nuestra clave privada\index{Clave privada}. De esta forma, cuando alguien lo descifre con nuestra clave pública\index{Clave pública} y compruebe el resumen, podrá estar seguro de que proviene de nosotros.\footnote{Es, en esencia, el fundamento sobre el que se basa la firma\index{Firma} digital.} Así conseguimos preservar la integridad\index{Integridad} y la autenticación\index{Autenticación} del mensaje, dos parámetros muy importantes a tener en cuenta en seguridad\index{Seguridad}. \emph{\parencite{Reference14}}
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.3]{Figures/PublicKeyEncryption}
   \decoRule
-  \caption[Cifrado de clave pública (Esquema)]{Esquema general del cifrado de clave pública}
+  \caption[Cifrado de clave pública (Esquema)]{Esquema general del cifrado\index{Cifrado} de clave pública\index{Clave pública}}
   \label{fig:PublicKeyEncryption}
 \end{figure}
 
 %-------------------------------------------------------------------------------
 
-\section{RSA}
+\section{RSA\index{RSA}}
 
 \label{RSA}
 
-Uno de los primeros algoritmos de criptografía pública (y el más utilizado hoy) es RSA (Rivest–Shamir–Adleman)\footnote{RSA debe su nombre a sus creadores: Ron Rivest, Adi Shamir y Leonard Adleman.}. Una de sus características más distintivas es el problema que plantea factorizar el producto de dos grandes números primos (\emph{factoring problem}). El resultado de esta factorización es luego usado en la generación de las claves.
+Uno de los primeros algoritmos de criptografía\index{Criptografía} pública\index{Clave pública} (y el más utilizado hoy) es RSA\index{RSA} (Rivest–Shamir–Adleman)\footnote{RSA\index{RSA} debe su nombre a sus creadores: Ron Rivest, Adi Shamir y Leonard Adleman.}. Una de sus características más distintivas es el problema que plantea factorizar el producto de dos grandes números primos (\emph{factoring problem}). El resultado de esta factorización es luego usado en la generación de las claves.
 
-En general, los algortimos de criptografía de clave pública son bastante más lentos que los de clave simétrica. Por ello, se suelen usar en conjunto con algún algoritmo de criptografía simétrica, como AES. \emph{\parencite{Reference9}}
+En general, los algortimos de criptografía\index{Criptografía} de clave pública\index{Clave pública} son bastante más lentos que los de clave simétrica\index{Clave simétrica}. Por ello, se suelen usar en conjunto con algún algoritmo de criptografía\index{Criptografía} simétrica\index{Clave simétrica}, como AES\index{AES}. \emph{\parencite{Reference9}}
 
-\subsection{Clave pública RSA}
+\subsection{Clave pública\index{Clave pública} RSA\index{RSA}}
 
-Dentro del conjunto del par de claves RSA, la pública es aquella que no mantenemos en secreto para que cualquiera que quisiera comunicarse con nosotros pudiera hacerlo de manera confidencial. Este tipo de claves consta de dos elementos:
+Dentro del conjunto del par de claves RSA\index{RSA}, la pública\index{Clave pública} es aquella que no mantenemos en secreto para que cualquiera que quisiera comunicarse con nosotros pudiera hacerlo de manera confidencial. Este tipo de claves consta de dos elementos:
 \begin{itemize}
-  \item \keyword{n} -- el módulo RSA, un entero positivo.
-  \item \keyword{e} -- el exponente público RSA, otro entero positivo.
+  \item \keyword{n} -- el módulo RSA\index{RSA}, un entero positivo.
+  \item \keyword{e} -- el exponente público RSA\index{RSA}, otro entero positivo.
 \end{itemize}
 
-Lo primero que se debe hacer para generar la clave pública es seleccionar de manera aleatoria dos números primos impares distintos, lo suficientemente grandes como para que sea computacionalmente inviable su descubrimiento por parte de un atacante. Una vez encontrados, el módulo n de la clave pública será el producto de estos dos números primos.\footnote{Por convención, se denotan como p y q.}
+Lo primero que se debe hacer para generar la clave pública\index{Clave pública} es seleccionar de manera aleatoria dos números primos impares distintos, lo suficientemente grandes como para que sea computacionalmente inviable su descubrimiento por parte de un atacante. Una vez encontrados, el módulo n de la clave pública\index{Clave pública} será el producto de estos dos números primos.\footnote{Por convención, se denotan como p y q.}
 \[ n = p \boldsymbol{\cdot} q \]
 
 Ahora que tenemos el módulo de la clave definido, es hora de generar un exponente público e adecuado. Para ello, haremos uso de la función de Carmichael\footnote{La función que se muestra solo es válida cuando n es el producto de dos números primos impares y distintos.}, la cual tiene la siguiente forma:
@@ -298,29 +298,29 @@ Ahora que tenemos el módulo de la clave definido, es hora de generar un exponen
 El exponente público e será aquel número entero comprendido entre 3 y (n - 1) que satisfaga:
 \[ MCD(e, \lambda(n)) = 1 \] \emph{\parencite{Reference10}}
 
-\subsection{Clave privada RSA}
+\subsection{Clave privada\index{Clave privada} RSA\index{RSA}}
 
-La clave privada es la que mantenemos oculta. Aunque existen varios modelos, generalmente consta de dos elementos:
+La clave privada\index{Clave privada} es la que mantenemos oculta. Aunque existen varios modelos, generalmente consta de dos elementos:
 \begin{itemize}
-  \item \keyword{n} -- el módulo RSA, un entero positivo (Debe ser el mismo que el de la clave pública).
-  \item \keyword{d} -- el exponente privado RSA, un entero positivo.
+  \item \keyword{n} -- el módulo RSA\index{RSA}, un entero positivo (Debe ser el mismo que el de la clave pública\index{Clave pública}).
+  \item \keyword{d} -- el exponente privado RSA\index{RSA}, un entero positivo.
 \end{itemize}
 
 Para calcular el exponente privado d deberemos elegir un entero positivo menor que n, que además cumpla:
 \[ e \boldsymbol{\cdot} d \equiv 1 \Mod{\lambda(n)} \]
 , donde e será el correspondiente exponente público. \emph{\parencite{Reference11}}
 
-\subsection{Evaluación de la función RSA}
+\subsection{Evaluación de la función RSA\index{RSA}}
 
 Lo primero que debemos hacer es conseguir una representación de nuestro mensaje como un número entero, comprendido entre 0 y (n - 1).
 
-Vamos a suponer que este mensaje queremos enviárselo a alguien cuya clave pública es (e, n). Si nuestro mensaje (recordemos que ahora es un entero) es M, para obtener el mensaje cifrado, aplicaremos la siguiente operación:
+Vamos a suponer que este mensaje queremos enviárselo a alguien cuya clave pública\index{Clave pública} es (e, n). Si nuestro mensaje (recordemos que ahora es un entero) es M, para obtener el mensaje cifrado\index{Cifrado}, aplicaremos la siguiente operación:
 \[ C \equiv E(M) \equiv M^e \Mod{n} \]
-El entero C será del mismo tamaño que M y representará al mensaje cifrado.
+El entero C será del mismo tamaño que M y representará al mensaje cifrado\index{Cifrado}.
 
-Si ahora el destinatario quisiera descifrar el mensaje, solo tendría que revertir la operación con su clave privada (d, n) de la siguiente manera:
+Si ahora el destinatario quisiera descifrar el mensaje, solo tendría que revertir la operación con su clave privada\index{Clave privada} (d, n) de la siguiente manera:
 \[ M \equiv D(C) \equiv C^d \Mod{n} \]
-De esta manera, recuperaría el mensaje original.\footnote{Para cifrar con una clave privada y descifrar con una pública se hacen las mismas operaciones, cambiando e y d donde corresponda.} \emph{\parencite{Reference12}}
+De esta manera, recuperaría el mensaje original.\footnote{Para cifrar con una clave privada\index{Clave privada} y descifrar con una pública\index{Clave pública} se hacen las mismas operaciones, cambiando e y d donde corresponda.} \emph{\parencite{Reference12}}
 
 %-------------------------------------------------------------------------------
 
@@ -328,25 +328,25 @@ De esta manera, recuperaría el mensaje original.\footnote{Para cifrar con una c
 
 \label{RSASSA-PSS}
 
-Antes hablamos de la necesidad de preservar la integridad y la autenticación en las comunicaciones. RSASSA-PSS es un algoritmo de firma digital que sirve precisamente para ello. Combina RSA con un método de codificación llamado \emph{Probabilistic Signature Scheme} (PSS).\footnote{Las siglas SSA corresponden a \emph{Signature Scheme with Appendix}, lo que quiere decir que la firma va añadida al final del mensaje o junto a él.}
+Antes hablamos de la necesidad de preservar la integridad\index{Integridad} y la autenticación\index{Autenticación} en las comunicaciones. RSASSA-PSS es un algoritmo de firma\index{Firma} digital que sirve precisamente para ello. Combina RSA\index{RSA} con un método de codificación\index{Codificación} llamado \emph{Probabilistic Signature Scheme} (PSS).\footnote{Las siglas SSA corresponden a \emph{Signature Scheme with Appendix}, lo que quiere decir que la firma\index{Firma} va añadida al final del mensaje o junto a él.}
 
 \subsection{\emph{Salt}}
 
-En criptografía, una \emph{salt} es un fragmento de \emph{bits} aleatorios que se utiliza junto a claves, funciones \emph{hash} y otros mecanismos de cifrado con el fin de prevenir ataques de diccionario o de \emph{rainbow table}. \emph{\parencite{Reference32}}
+En criptografía\index{Criptografía}, una \emph{salt} es un fragmento de \emph{bits} aleatorios que se utiliza junto a claves, funciones \emph{hash}\index{Hash} y otros mecanismos de cifrado\index{Cifrado} con el fin de prevenir ataques de diccionario o de \emph{rainbow table}. \emph{\parencite{Reference32}}
 
-\subsection{HMAC}
+\subsection{HMAC\index{HMAC}}
 
 \label{HMAC}
 
-Una HMAC (\emph{Hash-based Message Authentication Code}) es una construcción usada para verificar la integridad de un mensaje, así como a su autor.
+Una HMAC\index{HMAC} (\emph{Hash-based Message Authentication Code}) es una construcción usada para verificar la integridad\index{Integridad} de un mensaje, así como a su autor.
 
-Hace uso de una función \emph{hash} criptográfica, como MD5 o SHA-1, junto a una clave criptográfica secreta. La robustez de una HMAC depende de la función \emph{hash} elegida, del tamaño del resumen y del tamaño de la clave. \emph{\parencite{Reference31}}
+Hace uso de una función \emph{hash}\index{Hash} criptográfica, como MD5 o SHA-1, junto a una clave criptográfica secreta. La robustez de una HMAC\index{HMAC} depende de la función \emph{hash}\index{Hash} elegida, del tamaño del resumen y del tamaño de la clave. \emph{\parencite{Reference31}}
 
 \subsection{\emph{Probabilistic Signature Scheme} (PSS)}
 
 \label{PSS}
 
-PSS es un método de codificación\footnote{Un método de codificación es una operación que permite convertir un carácter de un determinado conjunto en un símbolo de otro sistema de representación.} desarrollado por Mihir Bellare y Phillip Rogaway, los cuales buscaban mejorar los métodos que existían. Para ello, incluyeron en su esquema el uso de una \emph{salt}, lo cual haría más seguro el algoritmo frente a intentos de romperlo. \emph{\parencite{Reference15}}
+PSS es un método de codificación\index{Codificación}\footnote{Un método de codificación\index{Codificación} es una operación que permite convertir un carácter de un determinado conjunto en un símbolo de otro sistema de representación.} desarrollado por Mihir Bellare y Phillip Rogaway, los cuales buscaban mejorar los métodos que existían. Para ello, incluyeron en su esquema el uso de una \emph{salt}, lo cual haría más seguro el algoritmo frente a intentos de romperlo. \emph{\parencite{Reference15}}
 
 \begin{figure}[ht]
   \centering
@@ -356,18 +356,18 @@ PSS es un método de codificación\footnote{Un método de codificación es una o
   \label{fig:PSS}
 \end{figure}
 
-Como vemos en la Figura~\ref{fig:PSS}, PSS genera un resumen (\emph{hash}) del mensaje. Este resumen se vuelve a pasar de nuevo por una función \emph{hash}\footnote{Las dos funciones \emph{hash} que se usan en el esquema deben ser la misma.} junto a un \emph{padding}\footnote{El primer \emph{padding} estará formado por 8 \emph{bytes} con valor \emph{0x00}.} y la \emph{salt} tal como muestra la figura.
+Como vemos en la Figura~\ref{fig:PSS}, PSS genera un resumen (\emph{hash}\index{Hash}) del mensaje. Este resumen se vuelve a pasar de nuevo por una función \emph{hash}\index{Hash}\footnote{Las dos funciones \emph{hash}\index{Hash} que se usan en el esquema deben ser la misma.} junto a un \emph{padding}\index{Padding}\footnote{El primer \emph{padding}\index{Padding} estará formado por 8 \emph{bytes} con valor \emph{0x00}.} y la \emph{salt} tal como muestra la figura.
 
-El resultado de esta operación será la segunda de 3 piezas que conformarán nuestro mensaje codificado y la denotaremos como H. Para la primera (\emph{maskedDB}), generaremos una máscara\footnote{Una máscara es muy parecida a una \emph{hash}. Mientras la segunda tiene un tamaño determinado, una máscara puede tomar distintos tamaños según la necesidad.} de H y haremos una operación XOR con ella y la \emph{salt} (junto a otro \emph{padding}).\footnote{Este \emph{padding} está formado por una cantidad variable de \emph{bytes} con valor \emph{0x00}, teniendo al final un \emph{byte} de valor \emph{0x01}.}
+El resultado de esta operación será la segunda de 3 piezas que conformarán nuestro mensaje codificado y la denotaremos como H. Para la primera (\emph{maskedDB}), generaremos una máscara\footnote{Una máscara es muy parecida a una \emph{hash}\index{Hash}. Mientras la segunda tiene un tamaño determinado, una máscara puede tomar distintos tamaños según la necesidad.} de H y haremos una operación XOR con ella y la \emph{salt} (junto a otro \emph{padding}\index{Padding}).\footnote{Este \emph{padding}\index{Padding} está formado por una cantidad variable de \emph{bytes} con valor \emph{0x00}, teniendo al final un \emph{byte} de valor \emph{0x01}.}
 
 Ahora solo nos quedará añadir al final de nuestra salida un \emph{byte} con valor \emph{0xbc} y ya habremos acabado. \emph{\parencite{Reference17}}
 
 %-------------------------------------------------------------------------------
 
-\section{HTTP}
+\section{HTTP\index{HTTP}}
 
-\emph{Hypertext Transfer Protocol} (HTTP) es un protocolo de nivel de aplicación para sistemas de información distribuidos.
+\emph{Hypertext Transfer Protocol} (HTTP\index{HTTP}) es un protocolo de nivel de aplicación para sistemas de información distribuidos.
 
 Es un protocolo genérico y sin estado que es usado para múltiples tareas como la transferencia de hipertexto o la representación de sistemas de ficheros.
 
-Una característica de HTTP es la negociación de la representación de los datos, lo que permite construir sistemas indpendientemente de los datos que se vayan a transmitir. \emph{\parencite{Reference18}}
+Una característica de HTTP\index{HTTP} es la negociación de la representación de los datos, lo que permite construir sistemas indpendientemente de los datos que se vayan a transmitir. \emph{\parencite{Reference18}}
