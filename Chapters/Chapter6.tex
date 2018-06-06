@@ -1,22 +1,44 @@
 % Chapter 6: Last Conclusions
 
-\chapter{Conclusiones y líneas de desarrollo futuras} % Main chapter title
+\chapter{Conclusiones} % Main chapter title
 
 \label{Chapter6} % Reference
 
 %-------------------------------------------------------------------------------
 
+\section{Consecución de objetivos}
+
 Los objetivos establecidos al comienzo del proyecto son:
 
 \begin{itemize}
-  \item Proporcionar un canal por el que transmitir la información.
+  \item Proporcionar un mecanismo que permita la transmisión de información entre distintos dispositivos.
   \item Desarrollar un esquema que permita cifrar y descifrar la información que se quiere transmitir.
   \item Diseñar una forma de comprobar la integridad y la autenticación de la información.
 \end{itemize}
 
-Estos objetivos se han cumplido de manera más o menos satisfactoria: se ha creado una vía para que distintos usuarios puedan intercambiar información, estando esta convenientemente cifrada y firmada.
+Estos objetivos se han cumplido de manera satisfactoria: se ha creado una vía para que distintos usuarios puedan intercambiar información, estando esta convenientemente cifrada y firmada.
 
-Sin embargo, el objetivo principal del proyecto es crear una aplicación accesible a cualquier usuario acostumbrado a un sistema de mensajería. Este objetivo no se ha cumplido, ya que la aplicación resultante requiere un manejo demasiado complicado para un usuario estándar.
+Sin embargo, el objetivo principal del proyecto es crear una aplicación accesible a cualquier usuario acostumbrado a un sistema de mensajería. Este objetivo no se ha cumplido: la aplicación resultante requiere tener un usuario habilitado en el servidor para enviar los fragmentos mediante \code{scp}, y el intercambio de claves resulta demasiado engorroso si lo comparamos con otras aplicaciones parecidas, ya que requiere acceder al sistema de ficheros del dispositivo para extraer los certificados.
+
+\section{Conocimientos adquiridos}
+
+Desde el comienzo del proyecto hasta la finalización de esta memoria he estado inmerso en un continuo aprendizaje. Aunque la mayoría de las competencias aprendidas provienen de los conceptos clave que se abordan en este trabajo, otros han sido adquiridos mediante ensayo y error en el desarrollo.
+
+Los conocimientos más relevantes que he adquirido son:
+
+\begin{itemize}
+  \item Reforzar y ampliar la mayoría de los conceptos e ideas introducidos en la asignatura de seguridad impartida en el grado.
+  \item Poder estudiar el problema que supone factorizar números primos en la generación de claves RSA.
+  \item Comprender mejor los estándares AES y RSA estudiando sus RFC correspondientes y pudiendo ver como funcionan internamente.
+  \item Aprender como funciona internamente el algoritmo de firma RSASSA-PSS, llegando a desarrollar el algoritmo paso a paso, siguiendo el RFC.
+  \item Ampliar la experiencia en Android al desarrollar la aplicación y todas las pantallas que incluye.
+  \item Abordar un proyecto grande de desarrollo, teniendo que pasar por varias etapas para la organización, la investigación y, finalmente, el desarrollo.
+  \item Ampliar las habilidades sobre \LaTeX, al utilizarlo en la confección de esta memoria.
+\end{itemize}
+
+Todo esto me ha permitido comprender mejor el mundo del desarrollo en la seguridad informática, al menos la parte que corresponde a la criptografía. Aunque esperaba que el proyecto tendiese más hacia la investigación, no estoy para nada disgustado, y me quedo con haber adquirido una nueva perspectiva de este campo.
+
+\section{Líneas de desarrollo futuras}
 
 Las líneas de desarrollo futuras se centran en mejorar la accesibilidad y la interfaz de la aplicación.
 
@@ -24,6 +46,6 @@ Estas nuevas iteraciones se basan en añadir más funcionalidad al intercambio d
 
 Algunos ajustes de personalización como poder modificar el tamaño de bloque de cifrado, una interfaz más vistosa o un sistema de notificaciones son otras mejoras que añadir en siguientes versiones.
 
-Por último, un cambio que hace más sencillo el uso de la aplicación es modificar la manera en la que se suben los fragmentos al servidor (actualmente se hace mediante scp) por un sistema que permite hacer llamadas POST.
+Por último, un cambio que hace más sencillo el uso de la aplicación es modificar la manera en la que se suben los fragmentos al servidor (actualmente se hace mediante \code{scp}) por un sistema que permite hacer llamadas POST.
 
 Todo el código utilizado en este TFG está disponible en un repositorio de GitHub\footnote{\url{https://github.com/merinhunter/Shatter}}.
