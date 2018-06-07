@@ -63,7 +63,7 @@ Las claves que se encuentran en el \emph{Keystore}\index{Keystore} están proteg
 Bouncy Castle (BC) es una API utilizada en criptografía\index{Criptografía}. Esta API, entre otras cosas, proporciona los siguientes servicios:
 \begin{itemize}
   \item Una API criptográfica ligera para Java\index{Java} y C\#.
-  \item Un proveedor para \emph{Java Cryptography Extension} (JCE)\footnote{JCE implementa encriptación, generación y protocolos de establecimiento de claves y algoritmos MAC\index{MAC}.} y para \emph{Java Cryptography Architecture} (JCA).
+  \item Un proveedor para \emph{Java Cryptography Extension} (JCE)\footnote{JCE implementa cifrado\index{Cifrado}, generación y protocolos de establecimiento de claves y algoritmos MAC\index{MAC}.} y para \emph{Java Cryptography Architecture} (JCA).
 \end{itemize}
 
 BC está mantenidos por una organización caritativa australiana, conocida como \emph{The Legion of the Bouncy Castle}. \emph{\parencite{Reference4}}
@@ -72,7 +72,7 @@ BC está mantenidos por una organización caritativa australiana, conocida como 
 
 \section{Criptografía\index{Criptografía} de clave simétrica\index{Clave simétrica}}
 
-La confidencialidad\index{Confidencialidad} en las comunicaciones es el objetivo principal que se persigue con los algoritmos de encriptación. La criptografía\index{Criptografía} de clave simétrica\index{Clave simétrica} nos permite comunicarnos con otra persona (o máquina) de manera que un tercero, aun teniendo el mensaje cifrado\index{Cifrado}, no pudiera extraer nada de información de él.
+La confidencialidad\index{Confidencialidad} en las comunicaciones es el objetivo principal que se persigue con los algoritmos de cifrado\index{Cifrado}. La criptografía\index{Criptografía} de clave simétrica\index{Clave simétrica} nos permite comunicarnos con otra persona (o máquina) de manera que un tercero, aun teniendo el mensaje cifrado\index{Cifrado}, no pudiera extraer nada de información de él.
 
 Los algoritmos basados en este modelo utilizan un secreto compartido entre los dos extremos que se quieren comunicar. Una vez acordado, nadie que no posea este secreto podría descifrar ningún mensaje enviado por uno u otro extremo. (Figura~\ref{fig:SymmetricKeyEncryption})
 
@@ -94,15 +94,15 @@ Es por ello que normalmente se mezcla este tipo de criptografía\index{Criptogra
 
 Dentro de la criptografía\index{Criptografía} simétrica\index{Clave simétrica} nos encontramos dos grandes algoritmos: los de flujo y los de bloques. Nos centraremos en el segundo.
 
-Un algoritmo basado en cifrado\index{Cifrado} por bloques es aquel que, como su propio nombre indica, realiza un cifrado\index{Cifrado} primero dividiendo el texto plano en bloques de un tamaño determinado\footnote{Cuando el tamaño del fichero que queremos encriptar no es múltiplo del tamaño de bloque, el bloque final tendrá un tamaño diferente al resto. Esto se soluciona con técnicas de \emph{padding}\index{Padding}, lo cual se explica en el siguiente punto.} y luego cifrando por separado estos bloques, dando como resultado un texto cifrado\index{Cifrado}.
+Un algoritmo basado en cifrado\index{Cifrado} por bloques es aquel que, como su propio nombre indica, realiza un cifrado\index{Cifrado} primero dividiendo el texto plano en bloques de un tamaño determinado\footnote{Cuando el tamaño del fichero que queremos cifrar no es múltiplo del tamaño de bloque, el bloque final tendrá un tamaño diferente al resto. Esto se soluciona con técnicas de \emph{padding}\index{Padding}, lo cual se explica en el siguiente punto.} y luego cifrando por separado estos bloques, dando como resultado un texto cifrado\index{Cifrado}.
 
-La mayoría de los cifradores por bloques son iterativos, es decir, realizan la misma operación un determinado número de veces o rondas (\emph{rounds}). Esta operación suele ser idéntica en todas las rondas, a excepción de la primera o la última, donde suele ser distinta.
+La mayoría de los algoritmos de cifrado\index{Cifrado} por bloques son iterativos, es decir, realizan la misma operación un determinado número de veces o rondas (\emph{rounds}). Esta operación suele ser idéntica en todas las rondas, a excepción de la primera o la última, donde suele ser distinta.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.5]{Figures/ECB}
   \decoRule
-  \caption[\emph{Electronic Codebook} (ECB)]{Cifrado usando el modo \emph{Electronic Codebook} (ECB)}
+  \caption[\emph{Electronic Codebook} (ECB)]{Cifrado\index{Cifrado} usando el modo \emph{Electronic Codebook} (ECB)}
   \label{fig:ECB}
 \end{figure}
 
@@ -114,7 +114,7 @@ Existen varios modos de operación para llevar a cabo un cifrado\index{Cifrado} 
 
 Relleno (\emph{Padding}\index{Padding}) es el nombre que recibe la técnica que permite en criptografía\index{Criptografía} por bloques expandir el último bloque del mensaje hasta lograr un tamaño deseado.
 
-Es muy común que, en la criptografía\index{Criptografía} por bloques, los fragmentos que encriptamos no tengan la longitud que queremos para nuestro sistema. Para solucionar esto existen multitud de técnicas de \emph{padding}\index{Padding}, desde agregar al final del bloque un \emph{byte} con un cierto valor, hasta simplemente rellenar con ceros.
+Es muy común que, en la criptografía\index{Criptografía} por bloques, los fragmentos que ciframos no tengan la longitud que queremos para nuestro sistema. Para solucionar esto existen multitud de técnicas de \emph{padding}\index{Padding}, desde agregar al final del bloque un \emph{byte} con un cierto valor, hasta simplemente rellenar con ceros.
 
 El requisito indispensable que debe cumplir cualquier técnica de \emph{padding}\index{Padding} es que debe permitir al destinatario diferenciar los \emph{bytes} del mensaje original de los \emph{bytes} de relleno. \emph{\parencite{Reference8}}
 
@@ -148,11 +148,11 @@ Como vemos en la Figura~\ref{fig:CBC_enc}, en el cifrado\index{Cifrado} con CBC,
   \label{fig:CBC_dec}
 \end{figure}
 
-A la hora de desencriptar, la misma función utilizada en la encriptación es usada para obtener cada bloque de texto a partir de los bloques cifrados. Una representación de este proceso lo encontramos en la Figura~\ref{fig:CBC_dec}.
+A la hora de descifrar, la misma función utilizada en el cifrado\index{Cifrado} es usada para obtener cada bloque de texto a partir de los bloques cifrados. Una representación de este proceso lo encontramos en la Figura~\ref{fig:CBC_dec}.
 
-El objetivo de un cifrado\index{Cifrado} por bloques es poder paralelizar el proceso de encriptación. Lamentablemente, el cifrado\index{Cifrado} con CBC debe ser secuencial, ya que para obtener cada bloque es necesario haber generado antes el anterior.
+El objetivo de un cifrado\index{Cifrado} por bloques es poder paralelizar el proceso de cifrado\index{Cifrado}. Lamentablemente, el cifrado\index{Cifrado} con CBC debe ser secuencial, ya que para obtener cada bloque es necesario haber generado antes el anterior.
 
-Sin embargo, el proceso de desencriptación con CBC sí que puede ser paralelizado, ya que las mútiples funciones de descifrado\index{Descifrado} que se realizan no dependen de ningún bloque anterior. \emph{\parencite{Reference24}}
+Sin embargo, el proceso de descifrado\index{Descifrado} con CBC sí que puede ser paralelizado, ya que las múltiples funciones de descifrado\index{Descifrado} que se realizan no dependen de ningún bloque anterior. \emph{\parencite{Reference24}}
 
 %-------------------------------------------------------------------------------
 
@@ -160,7 +160,7 @@ Sin embargo, el proceso de desencriptación con CBC sí que puede ser paraleliza
 
 \label{AES}
 
-\emph{Advanced Encryption Standard} (AES\index{AES}), también conocido como Rijndael por sus creadores, es el resultado del proceso de búsqueda de un estándar\index{Estándar} para encriptación por parte del gobierno de los Estados Unidos.
+\emph{Advanced Encryption Standard} (AES\index{AES}), también conocido como Rijndael por sus creadores, es el resultado del proceso de búsqueda de un estándar\index{Estándar} de cifrado por parte del gobierno de los Estados Unidos.
 
 AES\index{AES} es una variante de Rijndael (que a su vez es una variante de Square), del cual solo toma algunos modos. Mientras que el algoritmo original puede tomar tamaños de bloque múltiplos de 32 \emph{bits},\footnote{Con un mínimo de 128 \emph{bits} y un máximo de 256.} AES\index{AES} únicamente opera con tamaños de bloque igual a 128 \emph{bits}.
 
@@ -245,7 +245,7 @@ Una vez conseguidas las \emph{Round Keys}, se pasa por una ronda inicial especia
 
 Después de esta etapa inicial, se pasa a las rondas habladas en el punto anterior. El número de rondas que lleva a cabo el algoritmo depende del tamaño de la clave, lo cual vemos representado en el Cuadro~\ref{tab:rounds}.
 
-En todas estas rondas menos en la útlima, el orden de las transformaciones será siempre el mismo:
+En todas estas rondas menos en la última, el orden de las transformaciones será siempre el mismo:
 \[ SubBytes \rightarrow ShiftRows \rightarrow MixColumns \rightarrow AddRoundKey \]
 
 La última ronda es idéntica a las anteriores salvo por el hecho de que la transformación \emph{MixColumns} no se realiza.
@@ -260,7 +260,7 @@ Uno de los problemas que tiene la criptografía\index{Criptografía} de clave si
 
 La esencia de este algoritmo radica en que un mensaje cifrado\index{Cifrado} con una clave pública\index{Clave pública} solo puede ser descifrado\index{Descifrado} con su homóloga privada\index{Clave privada}, y viceversa. De esta manera podemos, tal como su propio nombre indica, difundir públicamente nuestra clave pública\index{Clave pública} mientras mantenemos oculta la privada\index{Clave privada}.
 
-Si lo que queremos es confidencialidad\index{Confidencialidad} durante la comunicación, entonces encriptaremos el contenido del mensaje con la clave pública\index{Clave pública} del destinatario, de forma que solo él podrá descifrarlo (Figura~\ref{fig:PublicKeyEncryption}).
+Si lo que queremos es confidencialidad\index{Confidencialidad} durante la comunicación, entonces ciframos el contenido del mensaje con la clave pública\index{Clave pública} del destinatario, de forma que solo él podrá descifrarlo (Figura~\ref{fig:PublicKeyEncryption}).
 
 Por otra parte, también nos interesa que cuando alguien reciba nuestro mensaje pueda estar seguro de que realmente es nuestro. Para lograr esto, lo que hacemos es cifrar un resumen del mensaje (\emph{hash}\index{Hash}) con nuestra clave privada\index{Clave privada}. De esta forma, cuando alguien lo descifre con nuestra clave pública\index{Clave pública} y compruebe el resumen, podrá estar seguro de que proviene de nosotros.\footnote{Es, en esencia, el fundamento sobre el que se basa la firma\index{Firma} digital.} Así conseguimos preservar la integridad\index{Integridad} y la autenticación\index{Autenticación} del mensaje, dos parámetros muy importantes a tener en cuenta en seguridad\index{Seguridad}. \emph{\parencite{Reference14}}
 
@@ -278,9 +278,9 @@ Por otra parte, también nos interesa que cuando alguien reciba nuestro mensaje 
 
 \label{RSA}
 
-Uno de los primeros algoritmos de criptografía\index{Criptografía} pública\index{Clave pública} (y el más utilizado hoy) es RSA\index{RSA} (Rivest–Shamir–Adleman)\footnote{RSA\index{RSA} debe su nombre a sus creadores: Ron Rivest, Adi Shamir y Leonard Adleman.}. Una de sus características más distintivas es el problema que plantea factorizar el producto de dos grandes números primos (\emph{factoring problem}). El resultado de esta factorización es luego usado en la generación de las claves.
+Uno de los primeros algoritmos de criptografía\index{Criptografía} pública\index{Clave pública} (y el más utilizado hoy) es RSA\index{RSA} (Rivest–Shamir–Adleman)\footnote{RSA\index{RSA} debe su nombre a sus creadores: Ron Rivest, Adi Shamir y Leonard Adleman.}. Una de sus características más distintivas es el problema que plantea la factorización\index{Factorización} del producto de dos grandes números primos (\emph{factoring problem}). El resultado de esta factorización\index{Factorización} es luego usado en la generación de las claves.
 
-En general, los algortimos de criptografía\index{Criptografía} de clave pública\index{Clave pública} son bastante más lentos que los de clave simétrica\index{Clave simétrica}. Por ello, se suelen usar en conjunto con algún algoritmo de criptografía\index{Criptografía} simétrica\index{Clave simétrica}, como AES\index{AES}. \emph{\parencite{Reference9}}
+En general, los algoritmos de criptografía\index{Criptografía} de clave pública\index{Clave pública} son bastante más lentos que los de clave simétrica\index{Clave simétrica}. Por ello, se suelen usar en conjunto con algún algoritmo de criptografía\index{Criptografía} simétrica\index{Clave simétrica}, como AES\index{AES}. \emph{\parencite{Reference9}}
 
 \subsection{Clave pública\index{Clave pública} RSA\index{RSA}}
 
@@ -370,4 +370,4 @@ Ahora solo nos quedará añadir al final de nuestra salida un \emph{byte} con va
 
 Es un protocolo genérico y sin estado que es usado para múltiples tareas como la transferencia de hipertexto o la representación de sistemas de ficheros.
 
-Una característica de HTTP\index{HTTP} es la negociación de la representación de los datos, lo que permite construir sistemas indpendientemente de los datos que se vayan a transmitir. \emph{\parencite{Reference18}}
+Una característica de HTTP\index{HTTP} es la negociación de la representación de los datos, lo que permite construir sistemas independientemente de los datos que se vayan a transmitir. \emph{\parencite{Reference18}}

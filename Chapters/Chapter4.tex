@@ -65,7 +65,7 @@ El primer prototipo de la aplicación está desarrollado enteramente en Java\ind
 \end{figure}
 
 \begin{itemize}
-  \item \keyword{\code{Slice}} -- Un objeto de clase \code{Slice} es uno de los fragmentos en los que un fichero original se ha dividido. Está formado por una cabecera (\code{Header}) y un array de \emph{bytes} en el que se almacena el contenido del segmento del fichero. (Figura~\ref{fig:Slice_Header_1}) \footnote{Debido al contexto del TFG, se ha decidido no usar UML para confeccionar los esquemas expuestos en este capítulo.}
+  \item \keyword{\code{Slice}} -- Un objeto de clase \code{Slice} es uno de los fragmentos en los que un fichero original se ha dividido. Está formado por una cabecera (\code{Header}) y un \emph{array} de \emph{bytes} en el que se almacena el contenido del segmento del fichero. (Figura~\ref{fig:Slice_Header_1}) \footnote{Debido al contexto del TFG, se ha decidido no usar UML para confeccionar los esquemas expuestos en este capítulo.}
 
   \item \keyword{\code{Header}} -- En esta clase se almacenan los metadatos de un objeto de clase \code{Slice}. Se guardan datos como un contador, el número total de fragmentos para un fichero, un ID para la sesión\footnote{En esta primera iteración de la aplicación, el ID para identificar la sesión es un resumen \emph{hash}\index{Hash} del fichero.} y el tamaño original del fichero. (Figura~\ref{fig:Slice_Header_1})
 \end{itemize}
@@ -83,7 +83,7 @@ También se han desarrollado otras clases con métodos para trocear y recomponer
 \begin{itemize}
   \item \keyword{\code{Slicer}} -- Esta clase posee métodos para crear objetos de clase \code{Slice}. Recibe un fichero, un tamaño de bloque y un ID para identificar la sesión. Lee del fichero bloques del tamaño indicado hasta alcanzar el EOF y genera un \code{Slice} para cada uno de ellos, con una cabecera distinta. (Figura~\ref{fig:Assembler})
 
-  \item \keyword{\code{Composer}} -- Esta clase, a través de un método, recibe un array de objetos de clase \code{Slice} y devuelve un fichero compuesto. Lee uno a uno los fragmentos que recibe, prestando especial atención a sus cabeceras y si detecta que alguno falta genera un log de errores. (Figura~\ref{fig:Assembler})
+  \item \keyword{\code{Composer}} -- Esta clase, a través de un método, recibe un \emph{array} de objetos de clase \code{Slice} y devuelve un fichero compuesto. Lee uno a uno los fragmentos que recibe, prestando especial atención a sus cabeceras y si detecta que alguno falta genera un \emph{log} de errores. (Figura~\ref{fig:Assembler})
 \end{itemize}
 
 \subsection{Shatter II}
@@ -99,7 +99,7 @@ En esta segunda versión, el objetivo del prototipo es proporcionar confidencial
 \end{figure}
 
 \begin{itemize}
-  \item \keyword{\code{EncFile}} -- Viene a ser un objeto de clase \code{Slice} cifrado\index{Cifrado}. A parte de los datos encriptados del \code{Slice}, también incluye una cabecera (\code{EncFileHeader}) con algunos datos importantes y una pseudocabecera (\code{FalseHeader}) con datos menores. (Figura~\ref{fig:EncFile_Header_1})
+  \item \keyword{\code{EncFile}} -- Viene a ser un objeto de clase \code{Slice} cifrado\index{Cifrado}. Aparte de los datos cifrados del \code{Slice}, también incluye una cabecera (\code{EncFileHeader}) con algunos datos importantes y una pseudocabecera (\code{FalseHeader}) con datos menores. (Figura~\ref{fig:EncFile_Header_1})
 
   \item \keyword{\code{EncFileHeader}} -- Esta cabecera se usa para almacenar algunos metadatos importantes como, en este caso, el vector de inicialización (IV\index{IV}) que se ha usado en el cifrado\index{Cifrado} del objeto \code{Slice}. (Figura~\ref{fig:EncFile_Header_1})
 
@@ -129,9 +129,9 @@ Además de estas clases, se han creado otras clases que aportan los métodos nec
 
   \item \keyword{\code{SymmetricCipher}} -- Esta es la clase que se encarga de hacer la parte más importante en cuanto a la confidencialidad\index{Confidencialidad}. Una vez que ha sido inicializada con una clave simétrica\index{Clave simétrica}, genera textos cifrados a partir de texto plano y un IV\index{IV}. Igualmente, puede llevar a cabo el proceso inverso.
 
-  \item \keyword{\code{Encryptor}} -- Esta clase, en conjunto con las dos anteriores, es la encargada de generar los objetos de clase \code{EncFile}. Genera de manera aleatoria y segura una clave simétrica\index{Clave simétrica} para un algoritmo establecido y, con ella, inicializa una instancia de la clase \code{SymmetricCipher}. A continuación se le pasa un array de objetos de clase \code{Slice} del cual genera un array de objetos de clase \code{EncFile}, que es el que devuelve a través de un método. (Figura~\ref{fig:Encryptor})
+  \item \keyword{\code{Encryptor}} -- Esta clase, en conjunto con las dos anteriores, es la encargada de generar los objetos de clase \code{EncFile}. Genera de manera aleatoria y segura una clave simétrica\index{Clave simétrica} para un algoritmo establecido y, con ella, inicializa una instancia de la clase \code{SymmetricCipher}. A continuación se le pasa un \emph{array} de objetos de clase \code{Slice} del cual genera un \emph{array} de objetos de clase \code{EncFile}, que es el que devuelve a través de un método. (Figura~\ref{fig:Encryptor})
 
-  \item \keyword{\code{Decryptor}} -- La contraparte de la clase \code{Encryptor}. Realiza el proceso inverso y devuelve un array de objetos de clase \code{Slice} a partir de uno de objetos de clase \code{EncFile}. (Figura~\ref{fig:Decryptor})
+  \item \keyword{\code{Decryptor}} -- El homólogo de la clase \code{Encryptor}. Realiza el proceso inverso y devuelve un \emph{array} de objetos de clase \code{Slice} a partir de uno de objetos de clase \code{EncFile}. (Figura~\ref{fig:Decryptor})
 \end{itemize}
 
 \subsection{Shatter III}
@@ -199,7 +199,7 @@ Además de las clases mencionadas anteriormente, también se han desarrollado ot
 
   \item \keyword{\code{FileIO}} -- Esta clase tiene métodos para escribir y leer los distintos ficheros que intervienen en la aplicación.
 
-  \item \keyword{\code{Bytes}} -- Tiene implementados varios métodos para hacer operaciones con arrays de \emph{bytes}.
+  \item \keyword{\code{Bytes}} -- Tiene implementados varios métodos para hacer operaciones con \emph{arrays} de \emph{bytes}.
 \end{itemize}
 
 \subsection{Shatter IV\index{IV}}
@@ -207,7 +207,7 @@ Además de las clases mencionadas anteriormente, también se han desarrollado ot
 Este último prototipo está desarrollado como una aplicación en Android\index{Android}. El objetivo de este prototipo es hacer uso de varias herramientas que posee Android\index{Android} para que la aplicación funcione correctamente. Para ello se han creado nuevas clases:
 
 \begin{itemize}
-  \item \keyword{\code{KeyStoreHandler}} -- Esta clase se usa para realizar todas las operaciones necesarias con el \emph{Keystore}\index{Keystore} de Android\index{Android} (Véase~\ref{Keystore}). Se encarga de almacenar las claves, recuperarlas, usarlas para encriptar, firmar, etc.
+  \item \keyword{\code{KeyStoreHandler}} -- Esta clase se usa para realizar todas las operaciones necesarias con el \emph{Keystore}\index{Keystore} de Android\index{Android} (Véase~\ref{Keystore}). Se encarga de almacenar las claves, recuperarlas, usarlas para cifrar, firmar, etc.
 
   \item \keyword{\code{HTTPClient}} -- Un cliente HTTP\index{HTTP} muy sencillo que únicamente realiza peticiones GET.
 

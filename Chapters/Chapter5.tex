@@ -70,7 +70,7 @@ Una vez el nuevo usuario se ha importado, la pantalla principal se actualiza y m
 
 \subsection{Cifrado\index{Cifrado} y envío}
 
-Para enviar un mensaje a un contacto, se debe utilizar el botón \emph{Select File}, el cual abre una nueva pantalla para elegir un fichero (Figura~\ref{fig:file_picker}). El selector de ficheros pone en el campo de texto de la pantalla principal el \emph{path} absoluto del fichero seleccionado (también se puede escribir a mano), y ya solo queda tocar el botón \emph{Encrypt} del usuario al que vaya destinado el mensaje para que el fichero se fragmente y encripte. Si todo ha salido bien, se puede ver un mensaje en pantalla informando de ello, y en la ruta \path{Shatter/send/ID} se encuentran los fragmentos junto con la clave. (Figura~\ref{fig:encfiles})
+Para enviar un mensaje a un contacto, se debe utilizar el botón \emph{Select File}, el cual abre una nueva pantalla para elegir un fichero (Figura~\ref{fig:file_picker}). El selector de ficheros pone en el campo de texto de la pantalla principal el \emph{path} absoluto del fichero seleccionado (también se puede escribir a mano), y ya solo queda tocar el botón \emph{Encrypt} del usuario al que vaya destinado el mensaje para que el fichero se fragmente y cifre. Si todo ha salido bien, se puede ver un mensaje en pantalla informando de ello, y en la ruta \path{Shatter/send/ID} se encuentran los fragmentos junto con la clave. (Figura~\ref{fig:encfiles})
 
 \begin{figure}[!htb]
   \centering
@@ -88,7 +88,7 @@ Para enviar un mensaje a un contacto, se debe utilizar el botón \emph{Select Fi
   \label{fig:encfiles}
 \end{figure}
 
-El ID generado se debe comunicar al contacto al que vaya destinado, pero antes se debe subir el directorio que contiene los fragmentos al servidor\index{Servidor} haciendo uso del comando \code{scp} de Linux\index{Linux}, por lo que se debe disponer de un usuario habilitado en la máquina que aloja el servidor\index{Servidor}. \footnote{En caso de estar encriptando el mismo mensaje para varios usuarios, se puede saber que ID corresponde a cada usuario mirando un registro que se encuentra en la ruta \path{Shatter/list.txt}}
+El ID generado se debe comunicar al contacto al que vaya destinado, pero antes se debe subir el directorio que contiene los fragmentos al servidor\index{Servidor} haciendo uso del comando \code{scp} de Linux\index{Linux}, por lo que se debe disponer de un usuario habilitado en la máquina que aloja el servidor\index{Servidor}. \footnote{En caso de estar cifrando el mismo mensaje para varios usuarios, se puede saber que ID corresponde a cada usuario mirando un registro que se encuentra en la ruta \path{Shatter/list.txt}}
 
 \lstset{basicstyle=\ttfamily}
 \begin{lstlisting}[language=bash]
