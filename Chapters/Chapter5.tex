@@ -70,7 +70,7 @@ Una vez el nuevo usuario se ha importado, la pantalla principal se actualiza y m
 
 \subsection{Cifrado\index{Cifrado} y envío}
 
-Para enviar un mensaje a un contacto, se debe utilizar el botón \emph{Select File}, el cual abre una nueva pantalla para elegir un fichero (Figura~\ref{fig:file_picker}). El selector de ficheros pone en el campo de texto de la pantalla principal el \emph{path} absoluto del fichero seleccionado (también se puede escribir a mano), y ya solo queda tocar el botón \emph{Encrypt} del usuario al que vaya destinado el mensaje para que el fichero se fragmente y cifre. Si todo ha salido bien, se puede ver un mensaje en pantalla informando de ello, y en la ruta \path{Shatter/send/ID} se encuentran los fragmentos junto con la clave. (Figura~\ref{fig:encfiles})
+Para enviar un mensaje a un contacto, se debe utilizar el botón \emph{Select File}, el cual abre una nueva pantalla para elegir un fichero (Figura~\ref{fig:file_picker}). El selector de ficheros pone en el campo de texto de la pantalla principal el \emph{path} absoluto del fichero seleccionado (también se puede escribir a mano), y ya solo queda tocar el botón \emph{Encrypt} del usuario al que vaya destinado el mensaje para que el fichero se fragmente y cifre. Si todo ha salido bien, se puede ver un mensaje en pantalla informando de ello, y en la ruta \path{Shatter/send/ID/} se encuentran los fragmentos junto con la clave. (Figura~\ref{fig:encfiles})
 
 \begin{figure}[!htb]
   \centering
@@ -92,14 +92,14 @@ El ID generado se debe comunicar al contacto al que vaya destinado, pero antes s
 
 \lstset{basicstyle=\ttfamily}
 \begin{lstlisting}[language=bash]
-  $ scp Shatter/send/ID server
+  $ scp -r Shatter/send/ID/ user@hostname:server/
 \end{lstlisting}
 
 \subsection{Descarga y descifrado\index{Descifrado}}
 
 Para descargar un mensaje de un contacto determinado, este debe comunicar de alguna manera el ID del mensaje, el cual se debe escribir en el campo de texto de la pantalla principal. A continuación se pulsa el botón \emph{Decrypt} asociado al alias del contacto.
 
-Con esto, la aplicación pide al servidor\index{Servidor} un índice con todos los ficheros asociados a ese ID y descarga todos los que pueda en el directorio \path{Shatter/ID}. En caso de que algún fichero falte, informa de ello al usuario antes de proceder con el descifrado\index{Descifrado} y rellena un registro indicando cuales son los fragmentos que faltan. (Figura~\ref{fig:miss})
+Con esto, la aplicación pide al servidor\index{Servidor} un índice con todos los ficheros asociados a ese ID y descarga todos los que pueda en el directorio \path{Shatter/ID/}. En caso de que algún fichero falte, informa de ello al usuario antes de proceder con el descifrado\index{Descifrado} y rellena un registro indicando cuales son los fragmentos que faltan. (Figura~\ref{fig:miss})
 
 \begin{figure}[!htb]
   \centering
